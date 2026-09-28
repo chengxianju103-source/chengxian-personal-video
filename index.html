@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Chengxian's personal moving-image archive." />
+    <title>CHENGXIAN — Personal Archive</title>
+    <link rel="preload" href="personal-video.mp4" as="video" type="video/mp4" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Cpath d='M12 32h40M32 12v40' stroke='%23f4f2ec' stroke-width='2'/%3E%3C/svg%3E"
+    />
+    <style>
+      :root { color-scheme: dark; --black: #0a0a0a; --paper: #f4f2ec; --muted: rgba(244, 242, 236, 0.58); --line: rgba(244, 242, 236, 0.22); --acid: #dfff00; }
+      * { box-sizing: border-box; }
+      html { background: var(--black); }
+      body { margin: 0; min-width: 320px; background: var(--black); color: var(--paper); font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.01em; }
+      button { font: inherit; }
+      .archive { min-height: 100svh; padding: clamp(1.15rem, 2.6vw, 2.5rem); display: grid; grid-template-rows: auto 1fr auto; gap: clamp(1.5rem, 4vw, 3.5rem); }
+      .topbar, .footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-transform: uppercase; font-size: 0.74rem; letter-spacing: 0.14em; }
+      .topbar { color: var(--muted); }
+      .brand { color: var(--paper); font-weight: 700; }
+      .topbar p, .footer p { margin: 0; }
+      .workspace { min-height: min(44rem, 72svh); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(13rem, 0.72fr) minmax(0, 1.28fr); }
+      .intro { padding: clamp(1.15rem, 2.6vw, 2.5rem); display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
+      .eyebrow, .status, .meta { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.14em; line-height: 1.35; text-transform: uppercase; }
+      .intro h1 { margin: 3rem 0 auto; max-width: 8ch; font-size: clamp(2.7rem, 6.5vw, 7.5rem); font-weight: 500; line-height: 0.83; letter-spacing: -0.08em; text-transform: uppercase; }
+      .intro p:last-child { margin: 2.5rem 0 0; max-width: 20rem; }
+      .projects { min-height: 100%; display: grid; }
+      .project-card { position: relative; min-height: min(44rem, 72svh); overflow: hidden; border: 0; padding: clamp(1.15rem, 2.6vw, 2.5rem); color: var(--paper); background: #151515; text-align: left; cursor: pointer; isolation: isolate; }
+      .project-card::after { position: absolute; z-index: -1; inset: 0; content: ""; background: linear-gradient(90deg, rgba(0, 0, 0, 0.66) 0%, rgba(0, 0, 0, 0.12) 75%), linear-gradient(0deg, rgba(0, 0, 0, 0.74), transparent 56%); transition: background 220ms ease; }
+      .project-preview { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12) brightness(0.82); transition: filter 260ms ease, transform 650ms cubic-bezier(.2,.8,.2,1); }
+      .project-card:hover .project-preview, .project-card:focus-visible .project-preview { transform: scale(1.045); filter: grayscale(0.2) contrast(1.08) brightness(0.9); }
+      .project-card:hover::after, .project-card:focus-visible::after { background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.02) 80%), linear-gradient(0deg, rgba(0, 0, 0, 0.73), transparent 56%); }
+      .project-card:focus-visible { outline: 2px solid var(--acid); outline-offset: -7px; }
+      .card-head, .card-bottom { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.14em; }
+      .card-head p, .card-bottom p { margin: 0; }
+      .card-bottom { position: absolute; right: clamp(1.15rem, 2.6vw, 2.5rem); bottom: clamp(1.15rem, 2.6vw, 2.5rem); left: clamp(1.15rem, 2.6vw, 2.5rem); align-items: end; }
+      .card-title { margin: 0; max-width: 8ch; font-size: clamp(3rem, 7.6vw, 8.5rem); font-weight: 500; line-height: 0.79; letter-spacing: -0.09em; text-transform: uppercase; }
+      .open { color: var(--acid); font-weight: 700; }
+      .footer { color: var(--muted); }
+      .footer .right { color: var(--paper); }
+      dialog { width: min(100vw, 106rem); max-width: none; height: 100svh; max-height: none; margin: 0 auto; padding: 0; border: 0; background: var(--black); color: var(--paper); }
+      dialog::backdrop { background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(8px); }
+      .player-shell { position: relative; width: 100%; height: 100%; display: grid; place-items: center; background: #050505; }
+      .player { display: block; width: min(100%, 72rem); height: 100%; max-height: 100%; object-fit: contain; background: #000; }
+      .close-player { position: absolute; z-index: 2; top: clamp(1rem, 2.5vw, 2rem); right: clamp(1rem, 2.5vw, 2rem); padding: 0.72rem 0.85rem; border: 1px solid var(--line); background: rgba(10, 10, 10, 0.82); color: var(--paper); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
+      .close-player:hover, .close-player:focus-visible { background: var(--paper); color: var(--black); outline: none; }
+      .player-label { position: absolute; z-index: 1; top: clamp(1.1rem, 2.5vw, 2rem); left: clamp(1.1rem, 2.5vw, 2rem); margin: 0; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+      @media (max-width: 680px) { .topbar, .footer { font-size: 0.64rem; } .topbar p:last-child { display: none; } .workspace { grid-template-columns: 1fr; min-height: auto; } .intro { min-height: 15rem; border-right: 0; border-bottom: 1px solid var(--line); } .intro h1 { margin-top: 2rem; font-size: clamp(3.1rem, 15vw, 5.4rem); } .project-card { min-height: 64svh; } .card-title { font-size: clamp(3.5rem, 16vw, 5.8rem); } .footer p:first-child { max-width: 16rem; } }
+      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+    </style>
+  </head>
+  <body>
+    <main class="archive">
+      <header class="topbar">
+        <p class="brand">CHENGXIAN</p>
+        <p>Personal archive / 2026</p>
+      </header>
+
+      <section class="workspace" aria-labelledby="archive-title">
+        <div class="intro">
+          <p class="eyebrow">Select a project</p>
+          <h1 id="archive-title">Personal<br />Archive</h1>
+          <p class="status">One moving image is currently available.</p>
+        </div>
+
+        <div class="projects">
+          <button class="project-card" id="open-player" type="button" aria-haspopup="dialog">
+            <video class="project-preview" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+              <source src="personal-video.mp4" type="video/mp4" />
+            </video>
+            <span class="card-head"><span>01 / 01</span><span>00:26</span></span>
+            <span class="card-bottom"><span class="card-title">Personal<br />Video</span><span class="open">Open ↗</span></span>
+          </button>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>Personal moving image</p>
+        <p class="right">Click to play</p>
+      </footer>
+    </main>
+
+    <dialog id="video-dialog" aria-labelledby="player-title">
+      <div class="player-shell">
+        <p class="player-label" id="player-title">Personal Video / 2026</p>
+        <button class="close-player" id="close-player" type="button">Close ×</button>
+        <video class="player" id="personal-player" controls playsinline preload="metadata">
+          <source src="personal-video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </dialog>
+
+    <script>
+      const openButton = document.getElementById('open-player');
+      const dialog = document.getElementById('video-dialog');
+      const closeButton = document.getElementById('close-player');
+      const player = document.getElementById('personal-player');
+
+      function openPlayer() {
+        dialog.showModal();
+        player.play().catch(() => {});
+      }
+
+      function closePlayer() {
+        player.pause();
+        dialog.close();
+      }
+
+      openButton.addEventListener('click', openPlayer);
+      closeButton.addEventListener('click', closePlayer);
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) closePlayer();
+      });
+      dialog.addEventListener('cancel', () => player.pause());
+    </script>
+  </body>
+</html>
