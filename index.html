@@ -3,119 +3,151 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Chengxian's personal moving-image archive." />
-    <title>CHENGXIAN — Personal Archive</title>
+    <meta name="description" content="CHENGXIAN — a personal archive of moving image, body, material and constructed identity." />
+    <meta name="theme-color" content="#090909" />
+    <meta property="og:title" content="CHENGXIAN — The Constructed Self" />
+    <meta property="og:description" content="A personal archive of moving image, body, material and constructed identity." />
+    <title>CHENGXIAN — The Constructed Self</title>
+    <link rel="preload" href="constructed-self-loop.mp4" as="video" type="video/mp4" />
     <link rel="preload" href="personal-video.mp4" as="video" type="video/mp4" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Cpath d='M12 32h40M32 12v40' stroke='%23f4f2ec' stroke-width='2'/%3E%3C/svg%3E"
-    />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23090909'/%3E%3Cpath d='M13 32h38M32 13v38' stroke='%23f4f1ea' stroke-width='2'/%3E%3C/svg%3E" />
     <style>
-      :root { color-scheme: dark; --black: #0a0a0a; --paper: #f4f2ec; --muted: rgba(244, 242, 236, 0.58); --line: rgba(244, 242, 236, 0.22); --acid: #dfff00; }
-      * { box-sizing: border-box; }
-      html { background: var(--black); }
-      body { margin: 0; min-width: 320px; background: var(--black); color: var(--paper); font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.01em; }
-      button { font: inherit; }
-      .archive { min-height: 100svh; padding: clamp(1.15rem, 2.6vw, 2.5rem); display: grid; grid-template-rows: auto 1fr auto; gap: clamp(1.5rem, 4vw, 3.5rem); }
-      .topbar, .footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; text-transform: uppercase; font-size: 0.74rem; letter-spacing: 0.14em; }
-      .topbar { color: var(--muted); }
-      .brand { color: var(--paper); font-weight: 700; }
-      .topbar p, .footer p { margin: 0; }
-      .workspace { min-height: min(44rem, 72svh); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(13rem, 0.72fr) minmax(0, 1.28fr); }
-      .intro { padding: clamp(1.15rem, 2.6vw, 2.5rem); display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
-      .eyebrow, .status, .meta { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.14em; line-height: 1.35; text-transform: uppercase; }
-      .intro h1 { margin: 3rem 0 auto; max-width: 8ch; font-size: clamp(2.7rem, 6.5vw, 7.5rem); font-weight: 500; line-height: 0.83; letter-spacing: -0.08em; text-transform: uppercase; }
-      .intro p:last-child { margin: 2.5rem 0 0; max-width: 20rem; }
-      .projects { min-height: 100%; display: grid; }
-      .project-card { position: relative; min-height: min(44rem, 72svh); overflow: hidden; border: 0; padding: clamp(1.15rem, 2.6vw, 2.5rem); color: var(--paper); background: #151515; text-align: left; cursor: pointer; isolation: isolate; }
-      .project-card::after { position: absolute; z-index: -1; inset: 0; content: ""; background: linear-gradient(90deg, rgba(0, 0, 0, 0.66) 0%, rgba(0, 0, 0, 0.12) 75%), linear-gradient(0deg, rgba(0, 0, 0, 0.74), transparent 56%); transition: background 220ms ease; }
-      .project-preview { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.12) brightness(0.82); transition: filter 260ms ease, transform 650ms cubic-bezier(.2,.8,.2,1); }
-      .project-card:hover .project-preview, .project-card:focus-visible .project-preview { transform: scale(1.045); filter: grayscale(0.2) contrast(1.08) brightness(0.9); }
-      .project-card:hover::after, .project-card:focus-visible::after { background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.02) 80%), linear-gradient(0deg, rgba(0, 0, 0, 0.73), transparent 56%); }
-      .project-card:focus-visible { outline: 2px solid var(--acid); outline-offset: -7px; }
-      .card-head, .card-bottom { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.14em; }
-      .card-head p, .card-bottom p { margin: 0; }
-      .card-bottom { position: absolute; right: clamp(1.15rem, 2.6vw, 2.5rem); bottom: clamp(1.15rem, 2.6vw, 2.5rem); left: clamp(1.15rem, 2.6vw, 2.5rem); align-items: end; }
-      .card-title { margin: 0; max-width: 8ch; font-size: clamp(3rem, 7.6vw, 8.5rem); font-weight: 500; line-height: 0.79; letter-spacing: -0.09em; text-transform: uppercase; }
-      .open { color: var(--acid); font-weight: 700; }
-      .footer { color: var(--muted); }
-      .footer .right { color: var(--paper); }
-      dialog { width: min(100vw, 106rem); max-width: none; height: 100svh; max-height: none; margin: 0 auto; padding: 0; border: 0; background: var(--black); color: var(--paper); }
-      dialog::backdrop { background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(8px); }
-      .player-shell { position: relative; width: 100%; height: 100%; display: grid; place-items: center; background: #050505; }
-      .player { display: block; width: min(100%, 72rem); height: 100%; max-height: 100%; object-fit: contain; background: #000; }
-      .close-player { position: absolute; z-index: 2; top: clamp(1rem, 2.5vw, 2rem); right: clamp(1rem, 2.5vw, 2rem); padding: 0.72rem 0.85rem; border: 1px solid var(--line); background: rgba(10, 10, 10, 0.82); color: var(--paper); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; }
-      .close-player:hover, .close-player:focus-visible { background: var(--paper); color: var(--black); outline: none; }
-      .player-label { position: absolute; z-index: 1; top: clamp(1.1rem, 2.5vw, 2rem); left: clamp(1.1rem, 2.5vw, 2rem); margin: 0; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
-      @media (max-width: 680px) { .topbar, .footer { font-size: 0.64rem; } .topbar p:last-child { display: none; } .workspace { grid-template-columns: 1fr; min-height: auto; } .intro { min-height: 15rem; border-right: 0; border-bottom: 1px solid var(--line); } .intro h1 { margin-top: 2rem; font-size: clamp(3.1rem, 15vw, 5.4rem); } .project-card { min-height: 64svh; } .card-title { font-size: clamp(3.5rem, 16vw, 5.8rem); } .footer p:first-child { max-width: 16rem; } }
-      @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+      :root { color-scheme: dark; --ink:#090909; --ink-soft:#151515; --paper:#f4f1ea; --muted:rgba(244,241,234,.62); --line:rgba(244,241,234,.22); --acid:#c8ff00; --acid-dim:rgba(200,255,0,.14); --grid:1.25rem; }
+      * { box-sizing:border-box; }
+      html { background:var(--ink); scroll-behavior:smooth; }
+      body { min-width:320px; margin:0; overflow-x:hidden; background:var(--ink); color:var(--paper); font-family:Arial,Helvetica,sans-serif; letter-spacing:.012em; }
+      button,a { font:inherit; } button { color:inherit; } a { color:inherit; text-decoration:none; } ::selection { background:var(--acid); color:var(--ink); }
+      .site-shell { position:relative; isolation:isolate; }
+      .site-shell::before { position:fixed; z-index:20; inset:0; pointer-events:none; content:""; opacity:.24; background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px); background-size:calc(var(--grid) * 4) calc(var(--grid) * 4); mask-image:linear-gradient(to bottom,rgba(0,0,0,.88),transparent 82%); }
+      .site-header { position:absolute; z-index:10; top:0; right:0; left:0; display:grid; grid-template-columns:1fr auto; gap:1rem; align-items:start; padding:clamp(1rem,2.2vw,2.35rem); text-transform:uppercase; }
+      .brand-lockup { display:inline-flex; flex-direction:column; gap:.28rem; width:max-content; }
+      .brand-mark { font-size:clamp(1rem,1.7vw,1.34rem); font-weight:700; letter-spacing:-.055em; }
+      .brand-sub,.micro-label,.eyebrow,.card-meta,.identity-number,.footer-meta,.nav-button,.nav-link,.film-stat,.panel-kicker,.dialog-kicker,.scroll-cue { font-size:.67rem; line-height:1.1; letter-spacing:.15em; text-transform:uppercase; }
+      .brand-sub { color:var(--muted); }
+      .header-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.48rem; max-width:33rem; }
+      .nav-button,.nav-link { display:inline-flex; min-height:2.3rem; align-items:center; justify-content:center; border:1px solid var(--line); padding:.72rem .78rem; background:rgba(9,9,9,.42); color:var(--paper); cursor:pointer; transition:border-color .18s ease,color .18s ease,background .18s ease,transform .18s ease; }
+      .nav-button:hover,.nav-button:focus-visible,.nav-link:hover,.nav-link:focus-visible { border-color:var(--acid); background:var(--acid); color:var(--ink); outline:none; transform:translateY(-2px); }
+      .nav-button[data-emphasis="true"] { border-color:rgba(200,255,0,.78); color:var(--acid); }
+      .nav-button[data-emphasis="true"]:hover,.nav-button[data-emphasis="true"]:focus-visible { color:var(--ink); }
+      .hero { position:relative; min-height:max(44rem,100svh); overflow:clip; display:grid; align-items:end; padding:clamp(1rem,2.2vw,2.35rem); border-bottom:1px solid var(--line); isolation:isolate; }
+      .hero-video { position:absolute; z-index:-3; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.58) contrast(1.18) brightness(.63) saturate(.7); transform:scale(1.015); }
+      .hero::before { position:absolute; z-index:-2; inset:0; content:""; background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.02) 38%,rgba(0,0,0,.84) 100%),linear-gradient(90deg,rgba(0,0,0,.72),transparent 58%); }
+      .hero::after { position:absolute; z-index:-1; inset:0; content:""; opacity:.7; background:radial-gradient(circle at 70% 32%,rgba(200,255,0,.16),transparent 20%),linear-gradient(90deg,transparent 49.93%,rgba(244,241,234,.16) 50%,transparent 50.08%); pointer-events:none; }
+      .hero-grid { display:grid; grid-template-columns:minmax(0,1.15fr) minmax(13rem,.85fr); gap:1rem; width:100%; align-items:end; }
+      .hero-copy { max-width:61rem; }.hero-copy .eyebrow { margin:0 0 clamp(1.5rem,4vw,4.5rem); color:var(--acid); }
+      .hero-title { max-width:9.6ch; margin:0; font-size:clamp(4rem,10.2vw,12.8rem); font-weight:500; line-height:.75; letter-spacing:-.102em; text-transform:uppercase; }
+      .hero-title .outline { color:transparent; -webkit-text-stroke:1px rgba(244,241,234,.82); }
+      .hero-caption { max-width:29rem; margin:clamp(1.7rem,4vw,3.3rem) 0 0; color:rgba(244,241,234,.86); font-size:clamp(.88rem,1.1vw,1.03rem); line-height:1.46; }
+      .hero-side { display:grid; gap:.72rem; justify-items:stretch; max-width:25rem; justify-self:end; }
+      .film-spec { display:grid; grid-template-columns:auto 1fr; gap:.82rem; border-top:1px solid var(--line); padding-top:.7rem; }.film-stat { color:var(--muted); }.film-value { font-size:.84rem; line-height:1.22; text-transform:uppercase; }
+      .hero-open { display:flex; align-items:center; justify-content:space-between; width:100%; margin-top:.45rem; border:1px solid var(--acid); padding:.9rem 1rem; background:var(--acid); color:var(--ink); font-size:.74rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; cursor:pointer; transition:transform .18s ease,background .18s ease; }
+      .hero-open:hover,.hero-open:focus-visible { background:var(--paper); outline:none; transform:translateY(-3px); }
+      .scroll-cue { position:absolute; right:clamp(1rem,2.2vw,2.35rem); bottom:clamp(1rem,2.2vw,2.35rem); display:flex; gap:.55rem; align-items:center; color:var(--muted); }.scroll-cue::before { width:2.8rem; height:1px; content:""; background:var(--muted); }
+      .section { padding:clamp(4.5rem,10vw,10.5rem) clamp(1rem,2.2vw,2.35rem); border-bottom:1px solid var(--line); }
+      .section-head { display:grid; grid-template-columns:minmax(9rem,.34fr) minmax(0,1fr); gap:1rem; padding-bottom:1.1rem; border-bottom:1px solid var(--line); }
+      .section-head h2 { max-width:13ch; margin:0; font-size:clamp(2.1rem,5.2vw,6.2rem); font-weight:500; line-height:.82; letter-spacing:-.08em; text-transform:uppercase; }
+      .section-intro { align-self:end; max-width:35rem; margin:0; color:var(--muted); font-size:clamp(.92rem,1.25vw,1.12rem); line-height:1.45; }
+      .identity-layout { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(15rem,.8fr); gap:clamp(2rem,6vw,7rem); padding-top:clamp(2rem,5vw,5rem); }
+      .identity-statement { margin:0; max-width:20ch; font-size:clamp(2rem,4.2vw,5.1rem); font-weight:500; line-height:.88; letter-spacing:-.075em; text-transform:uppercase; }.identity-statement em { color:var(--acid); font-style:normal; }
+      .identity-grid { display:grid; gap:0; border-top:1px solid var(--line); }.identity-item { display:grid; grid-template-columns:4rem 1fr; gap:1rem; padding:1.05rem 0; border-bottom:1px solid var(--line); }.identity-number { color:var(--acid); }.identity-item h3 { margin:0 0 .32rem; font-size:.82rem; letter-spacing:.11em; text-transform:uppercase; }.identity-item p { max-width:25rem; margin:0; color:var(--muted); font-size:.88rem; line-height:1.45; }
+      .archive-grid { display:grid; grid-template-columns:minmax(0,1.32fr) minmax(14rem,.68fr); gap:1rem; padding-top:clamp(2rem,5vw,5rem); }
+      .film-card { position:relative; min-height:clamp(29rem,48vw,43rem); overflow:hidden; border:1px solid var(--line); background:var(--ink-soft); isolation:isolate; }.film-card::after { position:absolute; z-index:-1; inset:0; content:""; background:linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.85) 92%); }.film-card video { position:absolute; z-index:-2; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.46) contrast(1.15) brightness(.7); transition:filter .38s ease,transform .68s cubic-bezier(.2,.8,.2,1); }.film-card:hover video { filter:grayscale(.05) contrast(1.06) brightness(.85); transform:scale(1.04); }
+      .film-card-content { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(1rem,2.3vw,2rem); }.card-top,.card-bottom { display:flex; justify-content:space-between; gap:1rem; }.card-top { font-size:.67rem; letter-spacing:.15em; text-transform:uppercase; }.card-top span:last-child { color:var(--acid); }.card-bottom { align-items:end; }.card-bottom h3 { max-width:8ch; margin:0; font-size:clamp(3.2rem,6.7vw,8rem); font-weight:500; line-height:.76; letter-spacing:-.09em; text-transform:uppercase; }
+      .play-button { display:inline-flex; min-width:8.6rem; min-height:3rem; align-items:center; justify-content:center; border:1px solid var(--paper); padding:.7rem .85rem; background:rgba(9,9,9,.56); color:var(--paper); font-size:.68rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase; cursor:pointer; transition:background .18s ease,color .18s ease,transform .18s ease; }.play-button:hover,.play-button:focus-visible { background:var(--paper); color:var(--ink); outline:none; transform:translateY(-3px); }
+      .archive-aside { display:grid; align-content:space-between; gap:3rem; min-height:100%; border:1px solid var(--line); padding:clamp(1rem,2.3vw,2rem); background:linear-gradient(145deg,rgba(200,255,0,.11),rgba(200,255,0,0) 50%),var(--ink-soft); }.archive-aside h3 { max-width:9ch; margin:1.2rem 0 0; font-size:clamp(1.75rem,3vw,3.4rem); font-weight:500; line-height:.84; letter-spacing:-.075em; text-transform:uppercase; }.archive-aside p { max-width:20rem; margin:0; color:var(--muted); line-height:1.45; }.archive-list { display:grid; gap:0; border-top:1px solid var(--line); }.archive-list span { display:flex; justify-content:space-between; gap:1rem; padding:.82rem 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; }.archive-list span strong { color:var(--paper); font-weight:500; }
+      .site-footer { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:1rem; padding:1.1rem clamp(1rem,2.2vw,2.35rem) 1.5rem; color:var(--muted); }.site-footer p { margin:0; }.footer-meta { display:flex; align-items:center; gap:.55rem; }.footer-meta::before { width:.5rem; height:.5rem; border-radius:99px; content:""; background:var(--acid); box-shadow:0 0 0 .28rem var(--acid-dim); }
+      .identity-panel { position:fixed; z-index:30; top:0; right:0; width:min(31.5rem,100vw); height:100svh; transform:translateX(101%); border-left:1px solid rgba(244,241,234,.34); padding:clamp(1rem,2.4vw,2.25rem); background:rgba(12,12,12,.96); box-shadow:-2rem 0 6rem rgba(0,0,0,.36); backdrop-filter:blur(18px); transition:transform .44s cubic-bezier(.2,.8,.2,1); overflow-y:auto; }.identity-panel.is-open { transform:translateX(0); }.panel-head { display:flex; align-items:start; justify-content:space-between; gap:1rem; }.panel-kicker { margin:0; color:var(--acid); }.panel-close,.dialog-close { min-height:2.35rem; border:1px solid var(--line); padding:.62rem .7rem; background:transparent; color:var(--paper); font-size:.67rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; transition:color .18s ease,background .18s ease; }.panel-close:hover,.panel-close:focus-visible,.dialog-close:hover,.dialog-close:focus-visible { background:var(--paper); color:var(--ink); outline:none; }.panel-name { margin:clamp(4rem,9vw,7rem) 0 1.6rem; font-size:clamp(3.2rem,8vw,7.2rem); font-weight:500; line-height:.74; letter-spacing:-.095em; text-transform:uppercase; }.panel-intro { max-width:30rem; margin:0 0 2.7rem; color:rgba(244,241,234,.84); font-size:clamp(1rem,1.5vw,1.25rem); line-height:1.42; }.panel-index { display:grid; border-top:1px solid var(--line); }.panel-index div { display:grid; grid-template-columns:5.2rem 1fr; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); }.panel-index span { color:var(--acid); font-size:.67rem; letter-spacing:.13em; }.panel-index strong { display:block; margin-bottom:.4rem; font-size:.78rem; letter-spacing:.11em; text-transform:uppercase; }.panel-index p { margin:0; color:var(--muted); font-size:.86rem; line-height:1.4; }
+      dialog { width:min(100vw,105rem); max-width:none; height:100svh; max-height:none; margin:0 auto; border:0; padding:0; background:var(--ink); color:var(--paper); } dialog::backdrop { background:rgba(0,0,0,.84); backdrop-filter:blur(8px); }.player-shell { position:relative; display:grid; width:100%; height:100%; place-items:center; background:#050505; }.player { display:block; width:min(100%,74rem); height:100%; max-height:100%; object-fit:contain; background:#000; }.dialog-kicker { position:absolute; z-index:2; top:clamp(1rem,2.4vw,2rem); left:clamp(1rem,2.4vw,2rem); margin:0; color:var(--muted); }.dialog-close { position:absolute; z-index:2; top:clamp(1rem,2.4vw,2rem); right:clamp(1rem,2.4vw,2rem); background:rgba(9,9,9,.7); }
+      .about-dialog { width:min(48rem,calc(100vw - 2rem)); height:auto; max-height:min(44rem,calc(100svh - 2rem)); margin:1rem auto; border:1px solid var(--line); background:var(--ink-soft); }.about-inner { position:relative; padding:clamp(1.2rem,4vw,3rem); }.about-inner h2 { max-width:11ch; margin:4rem 0 1.7rem; font-size:clamp(3rem,7vw,6.5rem); font-weight:500; line-height:.77; letter-spacing:-.09em; text-transform:uppercase; }.about-inner > p { max-width:37rem; margin:0; color:rgba(244,241,234,.85); font-size:clamp(1rem,1.5vw,1.23rem); line-height:1.48; }.about-meta { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; margin-top:3rem; border-top:1px solid var(--line); padding-top:1rem; }.about-meta span { color:var(--muted); font-size:.67rem; line-height:1.35; letter-spacing:.13em; text-transform:uppercase; }.about-meta strong { display:block; margin-top:.35rem; color:var(--paper); font-size:.76rem; letter-spacing:.1em; text-transform:uppercase; }
+      @media (max-width:780px) { :root { --grid:1rem; }.site-header { grid-template-columns:1fr; }.header-actions { justify-content:flex-start; max-width:none; }.brand-lockup { padding-bottom:.15rem; }.hero { min-height:52rem; padding-top:10.5rem; }.hero-grid,.section-head,.identity-layout,.archive-grid { grid-template-columns:1fr; }.hero-side { width:100%; max-width:none; justify-self:stretch; }.hero-title { font-size:clamp(4.3rem,18vw,7.8rem); }.scroll-cue { display:none; }.section-head { gap:1.5rem; }.identity-statement { max-width:13ch; }.archive-aside { min-height:21rem; }.about-meta { grid-template-columns:1fr; }.site-footer { grid-template-columns:1fr; } }
+      @media (max-width:480px) { .site-header { padding:1rem; }.header-actions { gap:.35rem; }.nav-button,.nav-link { min-height:2.15rem; padding:.63rem .58rem; font-size:.6rem; }.hero { min-height:47rem; padding:9.8rem 1rem 1rem; }.hero-title { font-size:clamp(3.9rem,19vw,5.8rem); }.section { padding-right:1rem; padding-left:1rem; }.card-bottom { flex-direction:column; align-items:start; }.play-button { min-width:100%; }.panel-index div { grid-template-columns:4.2rem 1fr; } }
+      @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; }.hero-video,.film-card video { transform:none !important; } }
     </style>
   </head>
   <body>
-    <main class="archive">
-      <header class="topbar">
-        <p class="brand">CHENGXIAN</p>
-        <p>Personal archive / 2026</p>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="#top" aria-label="Back to top"><span class="brand-mark">CHENGXIAN</span><span class="brand-sub">Personal practice / 2026</span></a>
+        <nav class="header-actions" aria-label="Primary navigation">
+          <button class="nav-button" id="identity-toggle" type="button" aria-expanded="false" aria-controls="identity-panel" data-emphasis="true">Identity +</button>
+          <button class="nav-button" id="about-toggle" type="button">Designer +</button>
+          <a class="nav-link" href="#archive">Archive ↓</a>
+        </nav>
       </header>
-
-      <section class="workspace" aria-labelledby="archive-title">
-        <div class="intro">
-          <p class="eyebrow">Select a project</p>
-          <h1 id="archive-title">Personal<br />Archive</h1>
-          <p class="status">One moving image is currently available.</p>
-        </div>
-
-        <div class="projects">
-          <button class="project-card" id="open-player" type="button" aria-haspopup="dialog">
-            <video class="project-preview" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-              <source src="personal-video.mp4" type="video/mp4" />
-            </video>
-            <span class="card-head"><span>01 / 01</span><span>00:26</span></span>
-            <span class="card-bottom"><span class="card-title">Personal<br />Video</span><span class="open">Open ↗</span></span>
-          </button>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <p>Personal moving image</p>
-        <p class="right">Click to play</p>
-      </footer>
-    </main>
-
-    <dialog id="video-dialog" aria-labelledby="player-title">
-      <div class="player-shell">
-        <p class="player-label" id="player-title">Personal Video / 2026</p>
-        <button class="close-player" id="close-player" type="button">Close ×</button>
-        <video class="player" id="personal-player" controls playsinline preload="metadata">
-          <source src="personal-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </dialog>
-
+      <main>
+        <section class="hero" id="top" aria-labelledby="hero-title">
+          <video class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="constructed-self-loop.mp4" type="video/mp4" /></video>
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">01 — Moving image / personal archive</p>
+              <h1 class="hero-title" id="hero-title">The<br /><span class="outline">Constructed</span><br />Self</h1>
+              <p class="hero-caption">An evolving practice around body, object, material and the ways identity is assembled, rehearsed and released.</p>
+            </div>
+            <div class="hero-side" aria-label="Project information">
+              <div class="film-spec"><span class="film-stat">Status</span><span class="film-value">Archive active</span></div>
+              <div class="film-spec"><span class="film-stat">Axis</span><span class="film-value">Control ↔ Surrender</span></div>
+              <div class="film-spec"><span class="film-stat">Format</span><span class="film-value">Moving image / 2026</span></div>
+              <button class="hero-open open-player" type="button" aria-haspopup="dialog"><span>View moving image</span><span>↗</span></button>
+            </div>
+          </div>
+          <p class="scroll-cue">Scroll to index</p>
+        </section>
+        <section class="section" id="identity" aria-labelledby="identity-title">
+          <div class="section-head"><p class="micro-label">Identity index / 01—03</p><div><h2 id="identity-title">A practice of<br />tension.</h2><p class="section-intro">Rather than treating identity as fixed, this archive reads it as a field of feedback: external structures shape the self, and the self returns pressure to the world.</p></div></div>
+          <div class="identity-layout">
+            <p class="identity-statement">Hard surface.<br /><em>Soft</em> interior.<br />A body in<br />negotiation.</p>
+            <div class="identity-grid">
+              <article class="identity-item"><span class="identity-number">01</span><div><h3>Constructed self</h3><p>How posture, clothing, image and object become visible structures through which a person is read and rebuilt.</p></div></article>
+              <article class="identity-item"><span class="identity-number">02</span><div><h3>Body echo</h3><p>Training, movement and repetition leave traces. The body becomes both a record of change and a site of self-authorship.</p></div></article>
+              <article class="identity-item"><span class="identity-number">03</span><div><h3>Projection / feedback</h3><p>What is projected outward returns as a social image. Perception becomes material, and material becomes a new point of pressure.</p></div></article>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="archive" aria-labelledby="archive-title">
+          <div class="section-head"><p class="micro-label">Selected archive / 01</p><div><h2 id="archive-title">Moving image<br />as evidence.</h2><p class="section-intro">A short film studies construction and organic growth in the same frame: restraint is never entirely separate from release.</p></div></div>
+          <div class="archive-grid">
+            <article class="film-card">
+              <video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="constructed-self-loop.mp4" type="video/mp4" /></video>
+              <div class="film-card-content"><div class="card-top"><span>01 / 01</span><span>Film / 00:26</span></div><div class="card-bottom"><h3>Personal<br />Video</h3><button class="play-button open-player" type="button" aria-haspopup="dialog">Play film ↗</button></div></div>
+            </article>
+            <aside class="archive-aside" aria-label="Film details"><div><p class="micro-label">Work notes</p><h3>The form keeps changing.</h3></div><p>A moving archive of rigid frames, material fragments, plant growth and the body’s desire to exceed its own outline.</p><div class="archive-list"><span><strong>Medium</strong> Moving image</span><span><strong>Theme</strong> Control / surrender</span><span><strong>Year</strong> 2026</span></div></aside>
+          </div>
+        </section>
+      </main>
+      <footer class="site-footer"><p class="micro-label">CHENGXIAN — Personal archive / moving image / fashion practice</p><p class="footer-meta">Identity in progress</p></footer>
+      <aside class="identity-panel" id="identity-panel" aria-hidden="true" aria-label="Designer identity panel">
+        <div class="panel-head"><p class="panel-kicker">Designer identity / index</p><button class="panel-close" id="identity-close" type="button">Close ×</button></div>
+        <h2 class="panel-name">Chengxian<br />Practice</h2>
+        <p class="panel-intro">A fashion-practice archive working across clothing, the trained body, moving image and material gestures. The work asks who is constructing whom: the person, the object, or the world around them.</p>
+        <div class="panel-index"><div><span>Field 01</span><p><strong>Body / clothing</strong>Embodied silhouettes, training, restraint and self-presentation.</p></div><div><span>Field 02</span><p><strong>Object / world</strong>Structure, rust, fragments, growth and material feedback.</p></div><div><span>Field 03</span><p><strong>Image / gaze</strong>Social projection, misreading and the distance between appearance and interior.</p></div><div><span>Base</span><p><strong>Hong Kong / 2026</strong>An independent personal archive in motion.</p></div></div>
+      </aside>
+    </div>
+    <dialog id="video-dialog" aria-labelledby="player-title"><div class="player-shell"><p class="dialog-kicker" id="player-title">Personal video / 2026</p><button class="dialog-close" id="close-player" type="button">Close ×</button><video class="player" id="personal-player" controls playsinline preload="metadata"><source src="personal-video.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div></dialog>
+    <dialog class="about-dialog" id="about-dialog" aria-labelledby="about-title"><div class="about-inner"><button class="dialog-close" id="close-about" type="button">Close ×</button><p class="dialog-kicker">Designer note / 2026</p><h2 id="about-title">Not fixed.<br />Still forming.</h2><p>CHENGXIAN develops work from the friction between a constructed exterior and a sensitive interior. Through fashion practice and moving image, the archive follows moments when control bends into surrender, and when an object begins to shape the body that made it.</p><div class="about-meta"><span>Practice<strong>Fashion / image</strong></span><span>Focus<strong>Body / material</strong></span><span>Current archive<strong>Constructed self</strong></span></div></div></dialog>
     <script>
-      const openButton = document.getElementById('open-player');
-      const dialog = document.getElementById('video-dialog');
-      const closeButton = document.getElementById('close-player');
+      const videoDialog = document.getElementById('video-dialog');
       const player = document.getElementById('personal-player');
-
-      function openPlayer() {
-        dialog.showModal();
-        player.play().catch(() => {});
-      }
-
-      function closePlayer() {
-        player.pause();
-        dialog.close();
-      }
-
-      openButton.addEventListener('click', openPlayer);
-      closeButton.addEventListener('click', closePlayer);
-      dialog.addEventListener('click', (event) => {
-        if (event.target === dialog) closePlayer();
-      });
-      dialog.addEventListener('cancel', () => player.pause());
+      const openPlayerButtons = document.querySelectorAll('.open-player');
+      const closePlayer = document.getElementById('close-player');
+      const identityToggle = document.getElementById('identity-toggle');
+      const identityPanel = document.getElementById('identity-panel');
+      const identityClose = document.getElementById('identity-close');
+      const aboutDialog = document.getElementById('about-dialog');
+      const aboutToggle = document.getElementById('about-toggle');
+      const closeAbout = document.getElementById('close-about');
+      function openPlayer() { videoDialog.showModal(); player.play().catch(() => {}); }
+      function closePlayerDialog() { player.pause(); videoDialog.close(); }
+      function setIdentityPanel(open) { identityPanel.classList.toggle('is-open', open); identityPanel.setAttribute('aria-hidden', String(!open)); identityToggle.setAttribute('aria-expanded', String(open)); if (open) identityClose.focus(); else identityToggle.focus(); }
+      openPlayerButtons.forEach((button) => button.addEventListener('click', openPlayer));
+      closePlayer.addEventListener('click', closePlayerDialog);
+      videoDialog.addEventListener('click', (event) => { if (event.target === videoDialog) closePlayerDialog(); });
+      videoDialog.addEventListener('cancel', () => player.pause());
+      identityToggle.addEventListener('click', () => setIdentityPanel(!identityPanel.classList.contains('is-open')));
+      identityClose.addEventListener('click', () => setIdentityPanel(false));
+      aboutToggle.addEventListener('click', () => aboutDialog.showModal());
+      closeAbout.addEventListener('click', () => aboutDialog.close());
+      aboutDialog.addEventListener('click', (event) => { if (event.target === aboutDialog) aboutDialog.close(); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && identityPanel.classList.contains('is-open')) setIdentityPanel(false); });
     </script>
   </body>
 </html>
