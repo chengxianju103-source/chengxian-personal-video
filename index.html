@@ -133,15 +133,7 @@
       <header class="site-header">
         <a class="brand-lockup" href="#top" aria-label="Back to top"><span class="brand-mark">CHENGXIAN</span><span class="brand-sub">JU CHENGXIAN / 鞠承贤 — Fashion Designer</span></a>
         <nav class="header-actions" aria-label="Primary navigation">
-          <button class="nav-button" id="personal-identity-toggle" type="button" aria-expanded="false" aria-controls="personal-identity-menu" data-emphasis="true">Personal Identity +</button>
-          <div class="personal-identity-menu" id="personal-identity-menu" aria-hidden="true" aria-label="Personal identity destinations">
-            <div class="personal-identity-menu-head"><p class="micro-label">Personal identity / selected paths</p><button class="nav-button personal-identity-close" id="personal-identity-close" type="button">Close ×</button></div>
-            <div class="personal-identity-menu-grid">
-              <button class="personal-identity-item" id="open-identity-index" type="button"><span class="personal-identity-item-number">01</span><span class="personal-identity-item-copy"><strong>Identity Index</strong><small>Body / object / image / gaze</small></span><span class="personal-identity-item-arrow">↗</span></button>
-              <a class="personal-identity-item" href="https://chengxian-constructed-self.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener" aria-label="Open CHENGXIAN — Constructed Self in a new tab"><span class="personal-identity-item-number">02</span><span class="personal-identity-item-copy"><strong>CHENGXIAN — Constructed Self</strong><small>Practice archive / 2026</small></span><span class="personal-identity-item-arrow">↗</span></a>
-              <a class="personal-identity-item" href="https://chengxian-fieldnotes.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener" aria-label="Open Menswear Fieldnotes in a new tab"><span class="personal-identity-item-number">03</span><span class="personal-identity-item-copy"><strong>Menswear Fieldnotes</strong><small>Ethnographic research workspace</small></span><span class="personal-identity-item-arrow">↗</span></a>
-            </div>
-          </div>
+          <a class="nav-button" href="personal-identity.html" data-emphasis="true">Personal Identity ↗</a>
           <button class="nav-button" id="about-toggle" type="button">Designer +</button>
           <a class="nav-link" href="#archive">Archive ↓</a>
           <a class="nav-link" href="#texture">Texture ↗</a>
@@ -262,10 +254,6 @@
       const feelIiPlayer = document.getElementById('feel-ii-player');
       const openFeelIiButtons = document.querySelectorAll('.open-feel-ii');
       const closeFeelIi = document.getElementById('close-feel-ii');
-      const personalIdentityToggle = document.getElementById('personal-identity-toggle');
-      const personalIdentityMenu = document.getElementById('personal-identity-menu');
-      const personalIdentityClose = document.getElementById('personal-identity-close');
-      const identityIndexOpen = document.getElementById('open-identity-index');
       const identityPanel = document.getElementById('identity-panel');
       const identityClose = document.getElementById('identity-close');
       const aboutDialog = document.getElementById('about-dialog');
@@ -280,7 +268,6 @@
       function openFeelIi() { feelIiDialog.showModal(); feelIiPlayer.play().catch(() => {}); }
       function closeFeelIiDialog() { feelIiPlayer.pause(); feelIiDialog.close(); }
       function setIdentityPanel(open) { identityPanel.classList.toggle('is-open', open); identityPanel.setAttribute('aria-hidden', String(!open)); if (open) identityClose.focus(); }
-      function setPersonalIdentityMenu(open) { personalIdentityMenu.classList.toggle('is-open', open); personalIdentityMenu.setAttribute('aria-hidden', String(!open)); personalIdentityToggle.setAttribute('aria-expanded', String(open)); }
       openPlayerButtons.forEach((button) => button.addEventListener('click', openPlayer));
       closePlayer.addEventListener('click', closePlayerDialog);
       videoDialog.addEventListener('click', (event) => { if (event.target === videoDialog) closePlayerDialog(); });
@@ -297,16 +284,11 @@
       closeFeelIi.addEventListener('click', closeFeelIiDialog);
       feelIiDialog.addEventListener('click', (event) => { if (event.target === feelIiDialog) closeFeelIiDialog(); });
       feelIiDialog.addEventListener('cancel', () => feelIiPlayer.pause());
-      personalIdentityToggle.addEventListener('click', () => setPersonalIdentityMenu(!personalIdentityMenu.classList.contains('is-open')));
-      personalIdentityClose.addEventListener('click', () => setPersonalIdentityMenu(false));
-      identityIndexOpen.addEventListener('click', () => { setPersonalIdentityMenu(false); setIdentityPanel(true); });
-      personalIdentityMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setPersonalIdentityMenu(false)));
       identityClose.addEventListener('click', () => setIdentityPanel(false));
-      document.addEventListener('click', (event) => { if (personalIdentityMenu.classList.contains('is-open') && !personalIdentityMenu.contains(event.target) && !personalIdentityToggle.contains(event.target)) setPersonalIdentityMenu(false); });
       aboutToggle.addEventListener('click', () => aboutDialog.showModal());
       closeAbout.addEventListener('click', () => aboutDialog.close());
       aboutDialog.addEventListener('click', (event) => { if (event.target === aboutDialog) aboutDialog.close(); });
-      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { if (personalIdentityMenu.classList.contains('is-open')) setPersonalIdentityMenu(false); if (identityPanel.classList.contains('is-open')) setIdentityPanel(false); } });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && identityPanel.classList.contains('is-open')) setIdentityPanel(false); });
     </script>
   </body>
 </html>
