@@ -42,6 +42,7 @@
       .register-head { display:grid; grid-template-columns:clamp(2rem,6vw,5rem) minmax(0,1fr) minmax(11rem,.45fr) auto; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); color:var(--muted); }
       .register-head span:last-child { text-align:right; }
       .project-card { display:grid; grid-template-columns:clamp(2rem,6vw,5rem) minmax(0,1fr) minmax(11rem,.45fr) auto; gap:1rem; align-items:start; padding:clamp(1.15rem,2.3vw,2.35rem) 0; border-bottom:1px solid var(--line); transition:background .18s ease,color .18s ease; }
+      .project-card[hidden] { display:none; }
       .project-card:hover { background:rgba(244,241,234,.035); }
       .project-number { color:var(--acid); padding-top:.25rem; }
       .project-title { max-width:14ch; margin:0; font-size:clamp(2.2rem,4.4vw,5.8rem); font-weight:500; line-height:.8; letter-spacing:-.085em; text-transform:uppercase; }
