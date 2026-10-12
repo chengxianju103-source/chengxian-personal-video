@@ -68,11 +68,27 @@
       .brand-mark { font-size:clamp(1rem,1.7vw,1.34rem); font-weight:700; letter-spacing:-.055em; }
       .brand-sub,.micro-label,.eyebrow,.card-meta,.identity-number,.footer-meta,.nav-button,.nav-link,.film-stat,.panel-kicker,.dialog-kicker,.scroll-cue { font-size:.67rem; line-height:1.1; letter-spacing:.15em; text-transform:uppercase; }
       .brand-sub { color:var(--muted); }
-      .header-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.48rem; max-width:33rem; }
+      .header-actions { position:relative; display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.48rem; max-width:33rem; }
       .nav-button,.nav-link { display:inline-flex; min-height:2.3rem; align-items:center; justify-content:center; border:1px solid var(--line); padding:.72rem .78rem; background:rgba(9,9,9,.42); color:var(--paper); cursor:pointer; transition:border-color .18s ease,color .18s ease,background .18s ease,transform .18s ease; }
       .nav-button:hover,.nav-button:focus-visible,.nav-link:hover,.nav-link:focus-visible { border-color:var(--acid); background:var(--acid); color:var(--ink); outline:none; transform:translateY(-2px); }
       .nav-button[data-emphasis="true"] { border-color:rgba(200,255,0,.78); color:var(--acid); }
       .nav-button[data-emphasis="true"]:hover,.nav-button[data-emphasis="true"]:focus-visible { color:var(--ink); }
+      .personal-identity-menu { position:absolute; z-index:50; top:calc(100% + .6rem); right:0; display:none; width:min(47rem,calc(100vw - 2rem)); border:1px solid var(--line); padding:clamp(.72rem,1.4vw,1.15rem); background:rgba(9,9,9,.96); box-shadow:0 1.4rem 4rem rgba(0,0,0,.46); text-align:left; }
+      .personal-identity-menu.is-open { display:block; animation:identity-menu-in .18s ease both; }
+      .personal-identity-menu-head { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.62rem; }
+      .personal-identity-menu-head .micro-label { margin:0; color:var(--muted); }
+      .personal-identity-close { min-height:1.9rem; padding:.48rem .62rem; font-size:.58rem; }
+      .personal-identity-menu-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.48rem; }
+      .personal-identity-item { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:start; gap:.68rem; min-height:9.1rem; border:1px solid var(--line); padding:.86rem; background:rgba(244,241,234,.025); color:var(--paper); font:inherit; text-align:left; text-decoration:none; cursor:pointer; transition:border-color .18s ease,color .18s ease,background .18s ease,transform .18s ease; }
+      .personal-identity-item:hover,.personal-identity-item:focus-visible { border-color:var(--acid); background:var(--acid); color:var(--ink); outline:none; transform:translateY(-2px); }
+      .personal-identity-item-number,.personal-identity-item-arrow { color:var(--acid); font-size:.65rem; line-height:1.1; letter-spacing:.13em; }
+      .personal-identity-item:hover .personal-identity-item-number,.personal-identity-item:hover .personal-identity-item-arrow,.personal-identity-item:focus-visible .personal-identity-item-number,.personal-identity-item:focus-visible .personal-identity-item-arrow { color:var(--ink); }
+      .personal-identity-item-copy { display:grid; gap:.52rem; }
+      .personal-identity-item strong { font-size:.78rem; line-height:1.06; letter-spacing:.11em; text-transform:uppercase; }
+      .personal-identity-item small { color:var(--muted); font-size:.69rem; line-height:1.35; }
+      .personal-identity-item:hover small,.personal-identity-item:focus-visible small { color:rgba(9,9,9,.72); }
+      @keyframes identity-menu-in { from { opacity:0; transform:translateY(-.4rem); } to { opacity:1; transform:translateY(0); } }
+      @media (max-width:760px) { .personal-identity-menu { width:calc(100vw - 2rem); } .personal-identity-menu-grid { grid-template-columns:1fr; } .personal-identity-item { min-height:6.3rem; } }
       .hero { position:relative; min-height:max(44rem,100svh); overflow:clip; display:grid; align-items:end; padding:clamp(1rem,2.2vw,2.35rem); border-bottom:1px solid var(--line); isolation:isolate; }
       .hero-video { position:absolute; z-index:-3; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.58) contrast(1.18) brightness(.63) saturate(.7); transform:scale(1.015); }
       .hero::before { position:absolute; z-index:-2; inset:0; content:""; background:linear-gradient(180deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.02) 38%,rgba(0,0,0,.84) 100%),linear-gradient(90deg,rgba(0,0,0,.72),transparent 58%); }
@@ -117,15 +133,23 @@
       <header class="site-header">
         <a class="brand-lockup" href="#top" aria-label="Back to top"><span class="brand-mark">CHENGXIAN</span><span class="brand-sub">JU CHENGXIAN / 鞠承贤 — Fashion Designer</span></a>
         <nav class="header-actions" aria-label="Primary navigation">
-          <button class="nav-button" id="identity-toggle" type="button" aria-expanded="false" aria-controls="identity-panel" data-emphasis="true">Identity +</button>
+          <button class="nav-button" id="personal-identity-toggle" type="button" aria-expanded="false" aria-controls="personal-identity-menu" data-emphasis="true">Personal Identity +</button>
+          <div class="personal-identity-menu" id="personal-identity-menu" aria-hidden="true" aria-label="Personal identity destinations">
+            <div class="personal-identity-menu-head"><p class="micro-label">Personal identity / selected paths</p><button class="nav-button personal-identity-close" id="personal-identity-close" type="button">Close ×</button></div>
+            <div class="personal-identity-menu-grid">
+              <button class="personal-identity-item" id="open-identity-index" type="button"><span class="personal-identity-item-number">01</span><span class="personal-identity-item-copy"><strong>Identity Index</strong><small>Body / object / image / gaze</small></span><span class="personal-identity-item-arrow">↗</span></button>
+              <a class="personal-identity-item" href="https://chengxian-constructed-self.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener" aria-label="Open CHENGXIAN — Constructed Self in a new tab"><span class="personal-identity-item-number">02</span><span class="personal-identity-item-copy"><strong>CHENGXIAN — Constructed Self</strong><small>Practice archive / 2026</small></span><span class="personal-identity-item-arrow">↗</span></a>
+              <a class="personal-identity-item" href="https://chengxian-fieldnotes.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener" aria-label="Open Menswear Fieldnotes in a new tab"><span class="personal-identity-item-number">03</span><span class="personal-identity-item-copy"><strong>Menswear Fieldnotes</strong><small>Ethnographic research workspace</small></span><span class="personal-identity-item-arrow">↗</span></a>
+            </div>
+          </div>
           <button class="nav-button" id="about-toggle" type="button">Designer +</button>
           <a class="nav-link" href="#archive">Archive ↓</a>
           <a class="nav-link" href="#texture">Texture ↗</a>
           <a class="nav-link" href="#feel">Feel ↗</a>
           <a class="nav-link" href="#feel-ii">Feel II ↗</a>
           <a class="nav-link" href="#portfolio">Portfolio ↗</a>
-          <a class="nav-link" href="https://chengxian-constructed-self.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener" aria-label="Open CHENGXIAN — Constructed Self in a new tab">Constructed Self ↗</a>
-          <a class="nav-link" href="https://chengxian-fieldnotes.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener" aria-label="Open Menswear Fieldnotes in a new tab">Menswear Fieldnotes ↗</a>
+
+
         </nav>
       </header>
       <main>
@@ -238,7 +262,10 @@
       const feelIiPlayer = document.getElementById('feel-ii-player');
       const openFeelIiButtons = document.querySelectorAll('.open-feel-ii');
       const closeFeelIi = document.getElementById('close-feel-ii');
-      const identityToggle = document.getElementById('identity-toggle');
+      const personalIdentityToggle = document.getElementById('personal-identity-toggle');
+      const personalIdentityMenu = document.getElementById('personal-identity-menu');
+      const personalIdentityClose = document.getElementById('personal-identity-close');
+      const identityIndexOpen = document.getElementById('open-identity-index');
       const identityPanel = document.getElementById('identity-panel');
       const identityClose = document.getElementById('identity-close');
       const aboutDialog = document.getElementById('about-dialog');
@@ -252,7 +279,8 @@
       function closeFeelDialog() { feelPlayer.pause(); feelDialog.close(); }
       function openFeelIi() { feelIiDialog.showModal(); feelIiPlayer.play().catch(() => {}); }
       function closeFeelIiDialog() { feelIiPlayer.pause(); feelIiDialog.close(); }
-      function setIdentityPanel(open) { identityPanel.classList.toggle('is-open', open); identityPanel.setAttribute('aria-hidden', String(!open)); identityToggle.setAttribute('aria-expanded', String(open)); if (open) identityClose.focus(); else identityToggle.focus(); }
+      function setIdentityPanel(open) { identityPanel.classList.toggle('is-open', open); identityPanel.setAttribute('aria-hidden', String(!open)); if (open) identityClose.focus(); }
+      function setPersonalIdentityMenu(open) { personalIdentityMenu.classList.toggle('is-open', open); personalIdentityMenu.setAttribute('aria-hidden', String(!open)); personalIdentityToggle.setAttribute('aria-expanded', String(open)); }
       openPlayerButtons.forEach((button) => button.addEventListener('click', openPlayer));
       closePlayer.addEventListener('click', closePlayerDialog);
       videoDialog.addEventListener('click', (event) => { if (event.target === videoDialog) closePlayerDialog(); });
@@ -269,12 +297,16 @@
       closeFeelIi.addEventListener('click', closeFeelIiDialog);
       feelIiDialog.addEventListener('click', (event) => { if (event.target === feelIiDialog) closeFeelIiDialog(); });
       feelIiDialog.addEventListener('cancel', () => feelIiPlayer.pause());
-      identityToggle.addEventListener('click', () => setIdentityPanel(!identityPanel.classList.contains('is-open')));
+      personalIdentityToggle.addEventListener('click', () => setPersonalIdentityMenu(!personalIdentityMenu.classList.contains('is-open')));
+      personalIdentityClose.addEventListener('click', () => setPersonalIdentityMenu(false));
+      identityIndexOpen.addEventListener('click', () => { setPersonalIdentityMenu(false); setIdentityPanel(true); });
+      personalIdentityMenu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setPersonalIdentityMenu(false)));
       identityClose.addEventListener('click', () => setIdentityPanel(false));
+      document.addEventListener('click', (event) => { if (personalIdentityMenu.classList.contains('is-open') && !personalIdentityMenu.contains(event.target) && !personalIdentityToggle.contains(event.target)) setPersonalIdentityMenu(false); });
       aboutToggle.addEventListener('click', () => aboutDialog.showModal());
       closeAbout.addEventListener('click', () => aboutDialog.close());
       aboutDialog.addEventListener('click', (event) => { if (event.target === aboutDialog) aboutDialog.close(); });
-      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && identityPanel.classList.contains('is-open')) setIdentityPanel(false); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { if (personalIdentityMenu.classList.contains('is-open')) setPersonalIdentityMenu(false); if (identityPanel.classList.contains('is-open')) setIdentityPanel(false); } });
     </script>
   </body>
 </html>
