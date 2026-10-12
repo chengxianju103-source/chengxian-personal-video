@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal Identity by 鞠承贤 / JU CHENGXIAN — a project index connecting constructed self, menswear ethnography, clothing, body and social norms." />
+    <meta name="theme-color" content="#090909" />
+    <link rel="canonical" href="https://chengxianju103-source.github.io/chengxian-personal-video/personal-identity.html" />
+    <title>Personal Identity — 鞠承贤 / JU CHENGXIAN</title>
+    <style>
+      :root { color-scheme:dark; --ink:#090909; --ink-soft:#151515; --paper:#f4f1ea; --muted:rgba(244,241,234,.62); --line:rgba(244,241,234,.22); --acid:#c8ff00; --grid:1.25rem; }
+      * { box-sizing:border-box; }
+      html { background:var(--ink); scroll-behavior:smooth; }
+      body { min-width:320px; margin:0; overflow-x:hidden; background:var(--ink); color:var(--paper); font-family:Arial,Helvetica,sans-serif; letter-spacing:.012em; }
+      a,button { color:inherit; font:inherit; } a { text-decoration:none; } button { cursor:pointer; } ::selection { background:var(--acid); color:var(--ink); }
+      .site-shell { min-height:100vh; position:relative; isolation:isolate; }
+      .site-shell::before { position:fixed; z-index:20; inset:0; pointer-events:none; content:""; opacity:.24; background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px); background-size:calc(var(--grid) * 4) calc(var(--grid) * 4); mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 82%); }
+      .site-header { display:grid; grid-template-columns:1fr auto; gap:1rem; align-items:start; padding:clamp(1rem,2.2vw,2.35rem); border-bottom:1px solid var(--line); text-transform:uppercase; }
+      .brand-lockup { display:inline-flex; flex-direction:column; gap:.28rem; width:max-content; }
+      .brand-mark { font-size:clamp(1rem,1.7vw,1.34rem); font-weight:700; letter-spacing:-.055em; }
+      .brand-sub,.micro-label,.nav-link,.filter-label,.filter-button,.register-label,.project-meta,.project-number,.project-link,.footer-meta { font-size:.67rem; line-height:1.1; letter-spacing:.15em; text-transform:uppercase; }
+      .brand-sub,.page-intro,.project-description,.index-item p,.footer-meta { color:var(--muted); }
+      .header-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.48rem; max-width:47rem; }
+      .nav-link { display:inline-flex; min-height:2.3rem; align-items:center; justify-content:center; border:1px solid var(--line); padding:.72rem .78rem; background:rgba(9,9,9,.42); transition:border-color .18s ease,color .18s ease,background .18s ease,transform .18s ease; }
+      .nav-link:hover,.nav-link:focus-visible { border-color:var(--acid); background:var(--acid); color:var(--ink); outline:none; transform:translateY(-2px); }
+      .nav-link[aria-current="page"] { border-color:rgba(200,255,0,.8); color:var(--acid); }
+      .page-head { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(14rem,.6fr); gap:2rem; min-height:clamp(26rem,49vw,41rem); align-items:end; padding:clamp(2rem,5vw,6rem) clamp(1rem,2.2vw,2.35rem); border-bottom:1px solid var(--line); background:radial-gradient(circle at 78% 22%,rgba(200,255,0,.15),transparent 18%),linear-gradient(135deg,rgba(255,255,255,.035),transparent 42%); }
+      .micro-label { margin:0 0 clamp(1.5rem,4vw,4rem); color:var(--acid); }
+      .page-title { max-width:10ch; margin:0; font-size:clamp(4.1rem,10vw,12rem); font-weight:500; line-height:.75; letter-spacing:-.105em; text-transform:uppercase; }
+      .page-title .outline { color:transparent; -webkit-text-stroke:1px rgba(244,241,234,.82); }
+      .page-intro { align-self:end; max-width:28rem; margin:0 0 .28rem; font-size:clamp(.95rem,1.2vw,1.1rem); line-height:1.5; }
+      .ticker { overflow:hidden; border-bottom:1px solid var(--line); background:var(--acid); color:var(--ink); white-space:nowrap; }
+      .ticker-track { display:inline-flex; gap:2.4rem; min-width:max-content; padding:.84rem 0; font-size:clamp(.8rem,1.2vw,1rem); font-weight:700; letter-spacing:.13em; text-transform:uppercase; animation:ticker 30s linear infinite; }
+      .ticker-track span::after { margin-left:2.4rem; content:"✦"; }
+      @keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+      .project-zone { padding:clamp(2.2rem,5vw,5.2rem) clamp(1rem,2.2vw,2.35rem) clamp(4.5rem,10vw,9rem); }
+      .filter-bar { display:flex; flex-wrap:wrap; gap:.55rem .72rem; align-items:center; padding-bottom:1.2rem; border-bottom:1px solid var(--line); }
+      .filter-label { margin-right:.22rem; color:var(--muted); }
+      .filter-button { min-height:2.35rem; border:1px solid var(--paper); padding:.66rem .8rem; background:transparent; color:var(--paper); font-weight:700; transition:background .18s ease,color .18s ease,transform .18s ease; }
+      .filter-button:hover,.filter-button:focus-visible,.filter-button.is-active { background:var(--paper); color:var(--ink); outline:none; transform:translateY(-2px); }
+      .project-register { border-bottom:1px solid var(--line); }
+      .register-head { display:grid; grid-template-columns:clamp(2rem,6vw,5rem) minmax(0,1fr) minmax(11rem,.45fr) auto; gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); color:var(--muted); }
+      .register-head span:last-child { text-align:right; }
+      .project-card { display:grid; grid-template-columns:clamp(2rem,6vw,5rem) minmax(0,1fr) minmax(11rem,.45fr) auto; gap:1rem; align-items:start; padding:clamp(1.15rem,2.3vw,2.35rem) 0; border-bottom:1px solid var(--line); transition:background .18s ease,color .18s ease; }
+      .project-card:hover { background:rgba(244,241,234,.035); }
+      .project-number { color:var(--acid); padding-top:.25rem; }
+      .project-title { max-width:14ch; margin:0; font-size:clamp(2.2rem,4.4vw,5.8rem); font-weight:500; line-height:.8; letter-spacing:-.085em; text-transform:uppercase; }
+      .project-description { max-width:25rem; margin:.9rem 0 0; font-size:.9rem; line-height:1.45; }
+      .project-meta { display:grid; gap:.68rem; padding-top:.26rem; color:var(--muted); }
+      .project-meta strong { display:block; margin-top:.22rem; color:var(--paper); font-size:.75rem; font-weight:500; line-height:1.22; }
+      .project-link { display:inline-flex; min-width:8.8rem; min-height:2.55rem; align-items:center; justify-content:center; align-self:center; border:1px solid var(--acid); padding:.68rem .8rem; background:var(--acid); color:var(--ink); font-weight:700; transition:background .18s ease,transform .18s ease; }
+      .project-link:hover,.project-link:focus-visible { background:var(--paper); outline:none; transform:translateY(-2px); }
+      .identity-index { display:grid; grid-template-columns:minmax(10rem,.34fr) minmax(0,1fr); gap:1rem; margin-top:clamp(4rem,9vw,8rem); padding-top:1rem; border-top:1px solid var(--line); }
+      .identity-index h2 { max-width:10ch; margin:0; font-size:clamp(2rem,4.2vw,5rem); font-weight:500; line-height:.83; letter-spacing:-.08em; text-transform:uppercase; }
+      .index-list { border-top:1px solid var(--line); }
+      .index-item { display:grid; grid-template-columns:3.7rem minmax(0,1fr); gap:1rem; padding:1rem 0; border-bottom:1px solid var(--line); }
+      .index-item span { color:var(--acid); font-size:.67rem; letter-spacing:.14em; }
+      .index-item h3 { margin:0 0 .34rem; font-size:.82rem; letter-spacing:.11em; text-transform:uppercase; }
+      .index-item p { max-width:34rem; margin:0; font-size:.9rem; line-height:1.45; }
+      .site-footer { display:flex; justify-content:space-between; gap:1rem; padding:1.35rem clamp(1rem,2.2vw,2.35rem); border-top:1px solid var(--line); }
+      .site-footer .micro-label { margin:0; color:var(--paper); }
+      .footer-meta { margin:0; }
+      @media (max-width:780px) {
+        .site-header,.page-head { grid-template-columns:1fr; }
+        .header-actions { justify-content:flex-start; max-width:none; }
+        .page-head { min-height:31rem; }
+        .register-head { display:none; }
+        .project-card { grid-template-columns:3.2rem 1fr; }
+        .project-meta { grid-column:2; grid-row:2; }
+        .project-link { grid-column:2; justify-self:start; }
+        .identity-index { grid-template-columns:1fr; }
+      }
+      @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="./" aria-label="Back to the CHENGXIAN homepage">
+          <span class="brand-mark">CHENGXIAN</span>
+          <span class="brand-sub">Ju Chengxian / fashion designer</span>
+        </a>
+        <nav class="header-actions" aria-label="Site navigation">
+          <a class="nav-link" href="./">Home</a>
+          <a class="nav-link" href="personal-identity.html" aria-current="page">Personal Identity</a>
+          <a class="nav-link" href="./#archive">Archive</a>
+          <a class="nav-link" href="./#texture">Texture</a>
+          <a class="nav-link" href="./#portfolio">Portfolio</a>
+        </nav>
+      </header>
+      <main>
+        <section class="page-head" aria-labelledby="page-title">
+          <div>
+            <p class="micro-label">Project index / 2026</p>
+            <h1 class="page-title" id="page-title">Personal<br /><span class="outline">Identity</span></h1>
+          </div>
+          <p class="page-intro">An index of practice around how individual agency is negotiated within social norms—through clothing, body, self-presentation, moving image and fieldwork.</p>
+        </section>
+        <section class="ticker" aria-label="Key themes">
+          <div class="ticker-track"><span>Fit in</span><span>Adapt</span><span>Release</span><span>Redefine</span><span>Fit in</span><span>Adapt</span><span>Release</span><span>Redefine</span></div>
+        </section>
+        <section class="project-zone" id="projects" aria-labelledby="project-filter-title">
+          <div class="filter-bar">
+            <span class="filter-label" id="project-filter-title">Filter:</span>
+            <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All projects</button>
+            <button class="filter-button" type="button" data-filter="constructed" aria-pressed="false">Constructed self</button>
+            <button class="filter-button" type="button" data-filter="fieldnotes" aria-pressed="false">Menswear fieldnotes</button>
+          </div>
+          <div class="project-register" aria-live="polite">
+            <div class="register-head" aria-hidden="true"><span class="register-label">#</span><span class="register-label">Project title</span><span class="register-label">Format</span><span class="register-label">Access</span></div>
+            <article class="project-card" data-category="constructed">
+              <span class="project-number">01</span>
+              <div>
+                <h2 class="project-title">CHENGXIAN —<br />Constructed Self</h2>
+                <p class="project-description">A moving-image and fashion-practice archive tracing how clothing, posture, image and object construct a visible self—and how that self can still shift, resist and be redefined.</p>
+              </div>
+              <div class="project-meta"><span>Format<strong>Moving image / archive</strong></span><span>Axis<strong>Control ↔ autonomy</strong></span><span>Year<strong>2026</strong></span></div>
+              <a class="project-link" href="https://chengxian-constructed-self.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener">Open project ↗</a>
+            </article>
+            <article class="project-card" data-category="fieldnotes">
+              <span class="project-number">02</span>
+              <div>
+                <h2 class="project-title">Menswear<br />Fieldnotes</h2>
+                <p class="project-description">An ethnographic research workspace that compares anonymous interview material across work, school, friends, family and social media, turning lived evidence into menswear design insights.</p>
+              </div>
+              <div class="project-meta"><span>Format<strong>Ethnography / research tool</strong></span><span>Axis<strong>Norms ↔ agency</strong></span><span>Year<strong>2026</strong></span></div>
+              <a class="project-link" href="https://chengxian-fieldnotes.hengxiachengxianchengxian.chatgpt.site" target="_blank" rel="noopener">Open project ↗</a>
+            </article>
+          </div>
+          <section class="identity-index" aria-labelledby="identity-index-title">
+            <h2 id="identity-index-title">Identity<br />index.</h2>
+            <div class="index-list">
+              <article class="index-item"><span>01</span><div><h3>Body / clothing</h3><p>Embodied silhouettes, movement and dress are treated as visible negotiations between how a person feels and how they are expected to appear.</p></div></article>
+              <article class="index-item"><span>02</span><div><h3>Object / world</h3><p>Materials and objects project outward, then return as social pressure, feedback and new ways of seeing the self.</p></div></article>
+              <article class="index-item"><span>03</span><div><h3>Image / gaze</h3><p>Self-presentation remains contingent: it is shaped by social observation while leaving space for choice, deviation and redefinition.</p></div></article>
+            </div>
+          </section>
+        </section>
+      </main>
+      <footer class="site-footer"><p class="micro-label">CHENGXIAN — Personal identity / fashion practice</p><p class="footer-meta">Hong Kong / 2026</p></footer>
+    </div>
+    <script>
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const projectCards = document.querySelectorAll('.project-card');
+      function setFilter(filter) {
+        projectCards.forEach((card) => {
+          card.hidden = filter !== 'all' && card.dataset.category !== filter;
+        });
+        filterButtons.forEach((button) => {
+          const active = button.dataset.filter === filter;
+          button.classList.toggle('is-active', active);
+          button.setAttribute('aria-pressed', String(active));
+        });
+      }
+      filterButtons.forEach((button) => button.addEventListener('click', () => setFilter(button.dataset.filter)));
+    </script>
+  </body>
+</html>
