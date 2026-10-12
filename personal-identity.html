@@ -72,6 +72,46 @@
         .identity-index { grid-template-columns:1fr; }
       }
       @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; } }
+    
+      /* Curated archive sheet: adapts the clean, numbered index rhythm to CHENGXIAN's visual language. */
+      .project-zone { padding:clamp(3rem,7vw,7.5rem) clamp(1rem,3.5vw,4rem) clamp(4.5rem,10vw,9rem); background:var(--paper); color:var(--ink); }
+      .catalogue-head { display:flex; align-items:end; justify-content:space-between; gap:1rem; padding:0 0 clamp(1.3rem,2.5vw,2.3rem); border-bottom:1px solid rgba(9,9,9,.32); }
+      .catalogue-head h2 { max-width:10ch; margin:0; font-size:clamp(3.1rem,7vw,8rem); font-weight:500; line-height:.77; letter-spacing:-.095em; text-transform:uppercase; }
+      .catalogue-head p { margin:0 0 .35rem; color:rgba(9,9,9,.6); font-size:.67rem; line-height:1.45; letter-spacing:.15em; text-align:right; text-transform:uppercase; }
+      .filter-bar { gap:.5rem .65rem; padding:1.1rem 0; border-bottom:1px solid rgba(9,9,9,.32); }
+      .filter-label { color:rgba(9,9,9,.55); }
+      .filter-button { border-color:var(--ink); background:transparent; color:var(--ink); font-weight:700; }
+      .filter-button:hover,.filter-button:focus-visible,.filter-button.is-active { background:var(--ink); color:var(--paper); transform:none; }
+      .project-register { border-bottom:1px solid rgba(9,9,9,.32); }
+      .register-head { border-bottom:1px solid rgba(9,9,9,.32); color:rgba(9,9,9,.55); }
+      .project-card { grid-template-columns:clamp(2.6rem,5vw,4.5rem) minmax(13rem,1.1fr) minmax(12rem,.52fr) 3rem; gap:1rem; padding:clamp(1.15rem,2.25vw,2rem) .4rem; border-bottom:1px solid rgba(9,9,9,.32); transition:background .18s ease,color .18s ease; }
+      .project-card:hover { background:var(--acid); }
+      .project-number { color:var(--ink); }
+      .project-title { max-width:15ch; font-size:clamp(1.65rem,3.15vw,4rem); font-weight:500; line-height:.84; letter-spacing:-.07em; }
+      .project-description { max-width:35rem; margin:.6rem 0 0; color:rgba(9,9,9,.63); font-size:.78rem; line-height:1.42; }
+      .project-meta { padding-top:.1rem; color:rgba(9,9,9,.58); }
+      .project-meta strong { color:var(--ink); }
+      .project-link { width:3rem; min-width:3rem; min-height:3rem; border:0; padding:0; background:transparent; color:var(--ink); font-size:0; }
+      .project-link::after { content:"↗"; font-size:clamp(1.5rem,2vw,2.35rem); font-weight:400; line-height:1; }
+      .project-link:hover,.project-link:focus-visible { background:transparent; color:var(--ink); outline:1px solid var(--ink); transform:translate(3px,-3px); }
+      .project-card:hover .project-link { transform:translate(3px,-3px); }
+      .identity-index { margin-top:clamp(3.5rem,8vw,7rem); border-top:0; padding:clamp(1.4rem,3vw,3rem); background:var(--ink); color:var(--paper); }
+      .identity-index h2 { color:var(--paper); }
+      .index-list { border-top-color:var(--line); }
+      .index-item { border-bottom-color:var(--line); }
+      .index-item span { color:var(--acid); }
+      .index-item p { color:var(--muted); }
+      .site-footer { background:var(--ink); }
+      @media (max-width:780px) {
+        .catalogue-head { align-items:flex-start; flex-direction:column; }
+        .catalogue-head p { margin:0; text-align:left; }
+        .project-card { grid-template-columns:2.5rem minmax(0,1fr) 3rem; gap:.75rem; padding:.95rem .15rem; }
+        .project-meta { grid-column:2 / 4; grid-row:2; padding-top:.1rem; }
+        .project-link { grid-column:3; grid-row:1; justify-self:end; align-self:start; }
+        .project-description { font-size:.75rem; }
+        .identity-index { padding:1.15rem; }
+      }
+
     </style>
   </head>
   <body>
@@ -98,6 +138,10 @@
           <div class="ticker-track"><span>Persona</span><span>Adaptation</span><span>Body</span><span>Material</span><span>Gaze</span><span>Agency</span><span>Persona</span><span>Adaptation</span><span>Body</span><span>Material</span><span>Gaze</span><span>Agency</span></div>
         </section>
         <section class="project-zone" id="projects" aria-labelledby="project-filter-title">
+          <div class="catalogue-head">
+            <h2>Selected<br />Practice.</h2>
+            <p>Practice catalogue<br />08 entries / 2026</p>
+          </div>
           <div class="filter-bar">
             <span class="filter-label" id="project-filter-title">Filter:</span>
             <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">All work</button>
