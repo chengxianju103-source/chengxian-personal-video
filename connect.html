@@ -36,12 +36,13 @@
       .side-list span { display:flex; justify-content:space-between; gap:1rem; padding:.85rem 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; }
       .side-list strong { color:var(--paper); font-weight:500; text-align:right; }
       .profile-sheet { display:grid; grid-template-columns:minmax(15rem,.56fr) minmax(0,1fr); gap:clamp(1.5rem,5vw,6rem); padding:clamp(3.5rem,8vw,8rem) clamp(1rem,3.5vw,4rem); border-bottom:1px solid var(--dark-line); }
-      .profile-signal { position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:clamp(24rem,42vw,37rem); overflow:hidden; padding:clamp(1rem,2.4vw,2rem); background:var(--ink); color:var(--paper); }
-      .profile-signal::before { position:absolute; inset:auto -10% 8% auto; width:72%; aspect-ratio:1; border:1px solid rgba(244,241,234,.25); border-radius:50%; content:""; }
-      .profile-signal::after { position:absolute; inset:0; content:""; background:linear-gradient(135deg,transparent 49.8%,rgba(200,255,0,.65) 50%,transparent 50.2%),linear-gradient(90deg,transparent 17%,rgba(244,241,234,.12) 17.1%,transparent 17.2%); pointer-events:none; }
-      .signal-number,.signal-state { position:relative; z-index:1; font-size:.67rem; letter-spacing:.15em; text-transform:uppercase; }
+      .profile-signal { position:relative; isolation:isolate; display:flex; flex-direction:column; justify-content:space-between; min-height:clamp(24rem,42vw,37rem); overflow:hidden; padding:clamp(1rem,2.4vw,2rem); background:var(--ink); color:var(--paper); }
+      .profile-portrait { position:absolute; z-index:0; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 42%; filter:grayscale(1) contrast(1.14) brightness(.78); transform:scale(1.01); }
+      .profile-signal::before { position:absolute; z-index:1; inset:0; content:""; background:linear-gradient(180deg,rgba(9,9,9,.86) 0%,rgba(9,9,9,.12) 44%,rgba(9,9,9,.76) 100%),linear-gradient(90deg,rgba(9,9,9,.25),transparent 62%); pointer-events:none; }
+      .profile-signal::after { position:absolute; z-index:1; inset:0; content:""; background:linear-gradient(135deg,transparent 49.8%,rgba(200,255,0,.52) 50%,transparent 50.2%),linear-gradient(90deg,transparent 17%,rgba(244,241,234,.16) 17.1%,transparent 17.2%); pointer-events:none; }
+      .signal-number,.signal-state { position:relative; z-index:2; font-size:.67rem; letter-spacing:.15em; text-transform:uppercase; }
       .signal-number { color:var(--acid); }
-      .signal-name { position:relative; z-index:1; margin:0; font-size:clamp(3.6rem,7vw,7.6rem); font-weight:500; line-height:.72; letter-spacing:-.11em; text-transform:uppercase; }
+      .signal-name { position:relative; z-index:2; margin:0; font-size:clamp(3.6rem,7vw,7.6rem); font-weight:500; line-height:.72; letter-spacing:-.11em; text-transform:uppercase; }
       .signal-state { display:flex; justify-content:space-between; color:var(--muted); }
       .profile-content { align-self:center; }
       .section-kicker { margin:0 0 1rem; color:var(--dark-muted); }
@@ -131,7 +132,8 @@
         </section>
 
         <section class="profile-sheet" aria-labelledby="profile-name">
-          <div class="profile-signal" aria-label="CHENGXIAN JU profile marker">
+          <div class="profile-signal">
+            <img class="profile-portrait" src="assets/chengxian-ju-portrait.jpg" alt="Portrait of Chengxian Ju in a dark denim jacket" width="640" height="633" decoding="async" />
             <span class="signal-number">01 / Personal profile</span>
             <span class="signal-name">Ju<br />Cheng<br />Xian</span>
             <span class="signal-state"><span>Fashion practice</span><span>In progress</span></span>
