@@ -126,6 +126,23 @@
       @media (max-width:780px) { :root { --grid:1rem; }.site-header { grid-template-columns:1fr; }.header-actions { justify-content:flex-start; max-width:none; }.brand-lockup { padding-bottom:.15rem; }.hero { min-height:52rem; padding-top:10.5rem; }.hero-grid,.section-head,.identity-layout,.archive-grid,.texture-grid,.feel-grid,.feel-ii-grid,.portfolio-grid { grid-template-columns:1fr; }.hero-side { width:100%; max-width:none; justify-self:stretch; }.hero-title { font-size:clamp(4.3rem,18vw,7.8rem); }.scroll-cue { display:none; }.section-head { gap:1.5rem; }.identity-statement { max-width:13ch; }.archive-aside,.texture-aside,.feel-aside,.feel-ii-aside,.portfolio-aside { min-height:21rem; }.about-meta { grid-template-columns:1fr; }.site-footer { grid-template-columns:1fr; } }
       @media (max-width:480px) { .site-header { padding:1rem; }.header-actions { gap:.35rem; }.nav-button,.nav-link { min-height:2.15rem; padding:.63rem .58rem; font-size:.6rem; }.hero { min-height:47rem; padding:9.8rem 1rem 1rem; }.hero-title { font-size:clamp(3.9rem,19vw,5.8rem); }.section { padding-right:1rem; padding-left:1rem; }.card-bottom { flex-direction:column; align-items:start; }.play-button { min-width:100%; }.panel-index div { grid-template-columns:4.2rem 1fr; } }
       @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; }.hero-video,.film-card video,.texture-card video,.feel-card video,.feel-ii-card video { transform:none !important; } }
+    
+      .social-section { position:relative; overflow:hidden; background:linear-gradient(118deg,rgba(200,255,0,.11),rgba(200,255,0,0) 46%),var(--ink-soft); }
+      .social-list { margin-top:clamp(2rem,5vw,5rem); border-top:1px solid var(--line); }
+      .social-channel { display:grid; grid-template-columns:minmax(10rem,.5fr) minmax(0,1fr) auto; gap:1rem; align-items:center; min-height:clamp(5.6rem,8vw,8rem); border-bottom:1px solid var(--line); padding:1rem; transition:background .18s ease,color .18s ease,transform .18s ease; }
+      .social-channel:hover,.social-channel:focus-visible { background:var(--acid); color:var(--ink); outline:none; }
+      .social-platform { font-size:clamp(1.35rem,2.7vw,3rem); font-weight:500; line-height:.86; letter-spacing:-.06em; text-transform:uppercase; }
+      .social-platform small { display:inline-block; margin-left:.35rem; font-size:.55em; font-weight:500; letter-spacing:.06em; vertical-align:middle; }
+      .social-handle { color:var(--muted); font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; transition:color .18s ease; }
+      .social-arrow { font-size:clamp(1.7rem,3vw,3.6rem); font-weight:400; line-height:1; transition:transform .18s ease; }
+      .social-channel:hover .social-handle,.social-channel:focus-visible .social-handle { color:rgba(9,9,9,.7); }
+      .social-channel:hover .social-arrow,.social-channel:focus-visible .social-arrow { transform:translate(4px,-4px); }
+      @media (max-width:780px) {
+        .social-channel { grid-template-columns:minmax(0,1fr) auto; min-height:6rem; padding:.95rem 0; }
+        .social-handle { grid-column:1; grid-row:2; }
+        .social-arrow { grid-column:2; grid-row:1 / span 2; }
+      }
+
     </style>
   </head>
   <body>
@@ -213,6 +230,27 @@
               <div class="portfolio-card-content"><div class="card-top"><span>Portfolio / 16 pages</span><span>PDF / 2026</span></div><div class="card-bottom"><h3>Controlled<br />Becoming</h3><a class="play-button portfolio-link" href="chengxian-portfolio-2026.pdf" target="_blank" rel="noopener" aria-label="Open the full portfolio PDF in a new tab">Open PDF ↗</a></div></div>
             </article>
             <aside class="portfolio-aside" aria-label="Portfolio details"><div><p class="micro-label">Portfolio access</p><h3>Research, image &amp; fashion practice.</h3></div><p>Open the complete portfolio to view the full visual sequence, from the central question of control and surrender to the material and image experiments that shape the project.</p><div class="archive-list"><span><strong>Format</strong> PDF / web edition</span><span><strong>Length</strong> 16 pages</span><span><strong>Year</strong> 2026</span></div></aside>
+          </div>
+        </section>
+        <section class="section social-section" id="social" aria-labelledby="social-title">
+          <div class="section-head">
+            <p class="micro-label">Social channels / 2026</p>
+            <div>
+              <h2 id="social-title">Follow the<br />practice.</h2>
+              <p class="section-intro">Ongoing project notes, moving image and fashion research across two public channels.</p>
+            </div>
+          </div>
+          <div class="social-list" aria-label="Social profiles">
+            <a class="social-channel" href="https://www.instagram.com/jucessxi/" target="_blank" rel="noopener noreferrer" aria-label="Open CHENGXIAN's Instagram, @jucessxi, in a new tab">
+              <span class="social-platform">Instagram</span>
+              <span class="social-handle">@jucessxi</span>
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="social-channel" href="https://www.xiaohongshu.com/user/profile/61ec163e00000000100075e7" target="_blank" rel="noopener noreferrer" aria-label="Open CHENGXIAN's Xiaohongshu profile in a new tab">
+              <span class="social-platform">小红书 <small>Xiaohongshu</small></span>
+              <span class="social-handle">CHENGXIAN / profile</span>
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </section>
       </main>
