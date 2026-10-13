@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Connect with Chengxian Ju / 鞠承贤 — fashion designer and image-maker working across menswear, moving image, material study and digital fashion." />
+    <meta name="theme-color" content="#090909" />
+    <link rel="canonical" href="https://chengxianju103-source.github.io/chengxian-personal-video/connect.html" />
+    <title>Connect — Chengxian Ju / 鞠承贤</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23090909'/%3E%3Cpath d='M13 32h38M32 13v38' stroke='%23f4f1ea' stroke-width='2'/%3E%3C/svg%3E" />
+    <style>
+      :root { --ink:#090909; --ink-soft:#151515; --paper:#f4f1ea; --muted:rgba(244,241,234,.62); --dark-muted:rgba(9,9,9,.6); --line:rgba(244,241,234,.22); --dark-line:rgba(9,9,9,.26); --acid:#c8ff00; --acid-dim:rgba(200,255,0,.14); --grid:1.25rem; }
+      * { box-sizing:border-box; }
+      html { background:var(--paper); scroll-behavior:smooth; }
+      body { min-width:320px; margin:0; overflow-x:hidden; background:var(--paper); color:var(--ink); font-family:Arial,Helvetica,sans-serif; letter-spacing:.012em; }
+      a { color:inherit; text-decoration:none; } ::selection { background:var(--acid); color:var(--ink); }
+      .site-shell { position:relative; overflow:hidden; }
+      .site-shell::before { position:fixed; z-index:20; inset:0; pointer-events:none; content:""; opacity:.42; background-image:linear-gradient(rgba(9,9,9,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(9,9,9,.025) 1px,transparent 1px); background-size:calc(var(--grid) * 4) calc(var(--grid) * 4); mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 80%); }
+      .site-header { position:relative; z-index:5; display:grid; grid-template-columns:1fr auto; gap:1rem; align-items:start; padding:clamp(1rem,2.2vw,2.35rem); background:var(--ink); color:var(--paper); text-transform:uppercase; }
+      .brand-lockup { display:inline-flex; flex-direction:column; gap:.28rem; width:max-content; }
+      .brand-mark { font-size:clamp(1rem,1.7vw,1.34rem); font-weight:700; letter-spacing:-.055em; }
+      .brand-sub,.micro-label,.nav-link,.section-kicker,.fact-label,.register-label,.social-label,.footer-meta { font-size:.67rem; line-height:1.1; letter-spacing:.15em; text-transform:uppercase; }
+      .brand-sub { color:var(--muted); }
+      .header-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.48rem; max-width:40rem; }
+      .nav-link { display:inline-flex; min-height:2.3rem; align-items:center; justify-content:center; border:1px solid var(--line); padding:.72rem .78rem; background:rgba(9,9,9,.42); color:var(--paper); transition:border-color .18s ease,color .18s ease,background .18s ease,transform .18s ease; }
+      .nav-link:hover,.nav-link:focus-visible { border-color:var(--acid); background:var(--acid); color:var(--ink); outline:none; transform:translateY(-2px); }
+      .nav-link[aria-current="page"] { border-color:rgba(200,255,0,.8); color:var(--acid); }
+      .connect-hero { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(17rem,.8fr); gap:clamp(2rem,8vw,10rem); min-height:clamp(29rem,55vw,48rem); align-items:end; padding:clamp(3rem,9vw,9rem) clamp(1rem,3.5vw,4rem) clamp(2.4rem,5vw,5rem); background:radial-gradient(circle at 80% 23%,rgba(200,255,0,.18),transparent 17%),linear-gradient(135deg,#090909 0%,#151515 66%,#0e1107 100%); color:var(--paper); }
+      .connect-kicker { margin:0 0 clamp(1.5rem,4vw,4rem); color:var(--acid); }
+      .connect-title { max-width:8ch; margin:0; font-size:clamp(4.5rem,12vw,14rem); font-weight:500; line-height:.72; letter-spacing:-.11em; text-transform:uppercase; }
+      .connect-title .outline { color:transparent; -webkit-text-stroke:1px rgba(244,241,234,.8); }
+      .connect-intro { max-width:31rem; margin:clamp(1.7rem,4vw,3rem) 0 0; color:rgba(244,241,234,.84); font-size:clamp(.95rem,1.2vw,1.1rem); line-height:1.5; }
+      .connect-side { display:grid; align-content:end; gap:1rem; }
+      .side-label { margin:0; color:var(--muted); font-size:.67rem; letter-spacing:.15em; text-transform:uppercase; }
+      .side-list { display:grid; border-top:1px solid var(--line); }
+      .side-list span { display:flex; justify-content:space-between; gap:1rem; padding:.85rem 0; border-bottom:1px solid var(--line); color:var(--muted); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; }
+      .side-list strong { color:var(--paper); font-weight:500; text-align:right; }
+      .profile-sheet { display:grid; grid-template-columns:minmax(15rem,.56fr) minmax(0,1fr); gap:clamp(1.5rem,5vw,6rem); padding:clamp(3.5rem,8vw,8rem) clamp(1rem,3.5vw,4rem); border-bottom:1px solid var(--dark-line); }
+      .profile-signal { position:relative; display:flex; flex-direction:column; justify-content:space-between; min-height:clamp(24rem,42vw,37rem); overflow:hidden; padding:clamp(1rem,2.4vw,2rem); background:var(--ink); color:var(--paper); }
+      .profile-signal::before { position:absolute; inset:auto -10% 8% auto; width:72%; aspect-ratio:1; border:1px solid rgba(244,241,234,.25); border-radius:50%; content:""; }
+      .profile-signal::after { position:absolute; inset:0; content:""; background:linear-gradient(135deg,transparent 49.8%,rgba(200,255,0,.65) 50%,transparent 50.2%),linear-gradient(90deg,transparent 17%,rgba(244,241,234,.12) 17.1%,transparent 17.2%); pointer-events:none; }
+      .signal-number,.signal-state { position:relative; z-index:1; font-size:.67rem; letter-spacing:.15em; text-transform:uppercase; }
+      .signal-number { color:var(--acid); }
+      .signal-name { position:relative; z-index:1; margin:0; font-size:clamp(3.6rem,7vw,7.6rem); font-weight:500; line-height:.72; letter-spacing:-.11em; text-transform:uppercase; }
+      .signal-state { display:flex; justify-content:space-between; color:var(--muted); }
+      .profile-content { align-self:center; }
+      .section-kicker { margin:0 0 1rem; color:var(--dark-muted); }
+      .profile-name { max-width:10ch; margin:0; font-size:clamp(3rem,7vw,8.5rem); font-weight:500; line-height:.74; letter-spacing:-.1em; text-transform:uppercase; }
+      .profile-name .outline { color:transparent; -webkit-text-stroke:1px rgba(9,9,9,.68); }
+      .profile-role { margin:clamp(1.4rem,3vw,2.5rem) 0 0; font-size:clamp(1.05rem,1.6vw,1.42rem); line-height:1.3; }
+      .profile-role span { color:var(--dark-muted); }
+      .fact-list { margin-top:clamp(2.5rem,5vw,5rem); border-top:1px solid var(--dark-line); }
+      .fact-row { display:grid; grid-template-columns:minmax(7.4rem,.35fr) minmax(0,1fr); gap:1rem; padding:1rem 0; border-bottom:1px solid var(--dark-line); }
+      .fact-label { color:var(--dark-muted); padding-top:.18rem; }
+      .fact-row p { max-width:43rem; margin:0; font-size:clamp(.92rem,1.15vw,1.05rem); line-height:1.47; }
+      .fact-row em { color:var(--dark-muted); font-style:normal; }
+      .recognition { padding:clamp(3.5rem,8vw,8rem) clamp(1rem,3.5vw,4rem); background:var(--ink); color:var(--paper); }
+      .recognition-head { display:grid; grid-template-columns:minmax(11rem,.42fr) minmax(0,1fr); gap:1rem; padding-bottom:1.1rem; border-bottom:1px solid var(--line); }
+      .recognition-head h2 { max-width:9ch; margin:0; font-size:clamp(2.8rem,6vw,7.4rem); font-weight:500; line-height:.76; letter-spacing:-.095em; text-transform:uppercase; }
+      .recognition-head p { align-self:end; max-width:35rem; margin:0; color:var(--muted); font-size:clamp(.9rem,1.2vw,1.08rem); line-height:1.46; }
+      .recognition-list { margin:clamp(2rem,5vw,5rem) 0 0; padding:0; list-style:none; border-top:1px solid var(--line); }
+      .recognition-list li { display:grid; grid-template-columns:clamp(3rem,7vw,6rem) minmax(0,1fr) auto; gap:1rem; align-items:start; padding:1rem 0; border-bottom:1px solid var(--line); }
+      .recognition-year { color:var(--acid); font-size:.67rem; letter-spacing:.15em; }
+      .recognition-title { max-width:42rem; font-size:clamp(1rem,1.75vw,1.65rem); font-weight:500; line-height:1.1; }
+      .recognition-type { color:var(--muted); font-size:.67rem; letter-spacing:.13em; text-align:right; text-transform:uppercase; }
+      .connect-social { display:grid; grid-template-columns:minmax(11rem,.42fr) minmax(0,1fr); gap:1rem; padding:clamp(3.5rem,8vw,8rem) clamp(1rem,3.5vw,4rem); border-bottom:1px solid var(--dark-line); }
+      .connect-social h2 { max-width:8ch; margin:0; font-size:clamp(2.7rem,6vw,7.2rem); font-weight:500; line-height:.76; letter-spacing:-.095em; text-transform:uppercase; }
+      .connect-social-main { border-top:1px solid var(--dark-line); }
+      .social-link { display:grid; grid-template-columns:minmax(11rem,.55fr) minmax(0,1fr) auto; gap:1rem; align-items:center; min-height:6.2rem; border-bottom:1px solid var(--dark-line); padding:.9rem; transition:background .18s ease,color .18s ease; }
+      .social-link:hover,.social-link:focus-visible { background:var(--acid); color:var(--ink); outline:none; }
+      .social-label { font-size:clamp(1.25rem,2.6vw,2.7rem); font-weight:500; line-height:.9; letter-spacing:-.06em; }
+      .social-handle { color:var(--dark-muted); font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; transition:color .18s ease; }
+      .social-link:hover .social-handle,.social-link:focus-visible .social-handle { color:rgba(9,9,9,.7); }
+      .social-arrow { font-size:clamp(1.7rem,3.4vw,3.5rem); font-weight:400; line-height:1; transition:transform .18s ease; }
+      .social-link:hover .social-arrow,.social-link:focus-visible .social-arrow { transform:translate(4px,-4px); }
+      .site-footer { display:flex; justify-content:space-between; gap:1rem; padding:1.35rem clamp(1rem,3.5vw,4rem); background:var(--ink); color:var(--muted); }
+      .site-footer p { margin:0; }
+      @media (max-width:780px) {
+        .site-header,.connect-hero,.profile-sheet,.recognition-head,.connect-social { grid-template-columns:1fr; }
+        .header-actions { justify-content:flex-start; max-width:none; }
+        .connect-hero { min-height:42rem; }
+        .connect-side { max-width:none; }
+        .profile-signal { min-height:21rem; }
+        .fact-row { grid-template-columns:1fr; gap:.45rem; }
+        .recognition-head { gap:1.5rem; }
+        .recognition-list li { grid-template-columns:3rem 1fr; }
+        .recognition-type { grid-column:2; text-align:left; }
+        .social-link { grid-template-columns:minmax(0,1fr) auto; }
+        .social-handle { grid-column:1; grid-row:2; }
+        .social-arrow { grid-column:2; grid-row:1 / span 2; }
+        .site-footer { flex-direction:column; }
+      }
+      @media (max-width:480px) {
+        .site-header { padding:1rem; }
+        .nav-link { min-height:2.15rem; padding:.63rem .58rem; font-size:.59rem; }
+        .connect-hero,.profile-sheet,.recognition,.connect-social { padding-right:1rem; padding-left:1rem; }
+        .connect-title { font-size:clamp(4.15rem,19vw,6.5rem); }
+      }
+      @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; transition:none !important; } }
+    </style>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand-lockup" href="./" aria-label="Back to the CHENGXIAN homepage">
+          <span class="brand-mark">CHENGXIAN</span>
+          <span class="brand-sub">Ju Chengxian / fashion designer</span>
+        </a>
+        <nav class="header-actions" aria-label="Site navigation">
+          <a class="nav-link" href="./">Home</a>
+          <a class="nav-link" href="personal-identity.html">Personal Identity</a>
+          <a class="nav-link" href="connect.html" aria-current="page">Connect</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="connect-hero" aria-labelledby="connect-title">
+          <div>
+            <p class="connect-kicker micro-label">个人介绍 / Profile / 2026</p>
+            <h1 class="connect-title" id="connect-title">Con<span class="outline">nect.</span></h1>
+            <p class="connect-intro">Chengxian Ju is a fashion designer and image-maker developing a menswear practice around how individual agency is negotiated within social norms—through clothing, body, material and moving image.</p>
+          </div>
+          <aside class="connect-side" aria-label="Profile focus">
+            <p class="side-label">Practice focus</p>
+            <div class="side-list">
+              <span>Garment<strong>Menswear / silhouette</strong></span>
+              <span>Image<strong>Moving image / digital fashion</strong></span>
+              <span>Research<strong>Agency / social norms</strong></span>
+            </div>
+          </aside>
+        </section>
+
+        <section class="profile-sheet" aria-labelledby="profile-name">
+          <div class="profile-signal" aria-label="CHENGXIAN JU profile marker">
+            <span class="signal-number">01 / Personal profile</span>
+            <span class="signal-name">Ju<br />Cheng<br />Xian</span>
+            <span class="signal-state"><span>Fashion practice</span><span>In progress</span></span>
+          </div>
+          <div class="profile-content">
+            <p class="section-kicker">鞠承贤 / Chengxian Ju</p>
+            <h2 class="profile-name" id="profile-name">Fashion<br /><span class="outline">Designer.</span></h2>
+            <p class="profile-role">Fashion designer &amp; image-maker <span>working across menswear, material study and digital fashion.</span></p>
+            <div class="fact-list">
+              <article class="fact-row">
+                <span class="fact-label">Current</span>
+                <p>Fashion Practice, The Hong Kong Polytechnic University. Building a research-led menswear practice through garment, image and fieldwork.</p>
+              </article>
+              <article class="fact-row">
+                <span class="fact-label">Education</span>
+                <p>2020–2024 — B.A. Fashion Design Technology <em>(Womenswear)</em>, Zhongyuan University of Technology, Henan, China.</p>
+              </article>
+              <article class="fact-row">
+                <span class="fact-label">Experience</span>
+                <p>2025 — Assistant Stylist, Shanghai Kongyue Brand Management Co., Ltd.</p>
+              </article>
+              <article class="fact-row">
+                <span class="fact-label">Methods</span>
+                <p>Patternmaking, cutting and sewing; TPU film inflatable modules; CLO3D, Blender, ComfyUI, Midjourney, Photoshop and Illustrator.</p>
+              </article>
+              <article class="fact-row">
+                <span class="fact-label">Language</span>
+                <p>Chinese and English.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="recognition" aria-labelledby="recognition-title">
+          <div class="recognition-head">
+            <h2 id="recognition-title">Selected<br />Recognition.</h2>
+            <p>A concise record of fashion-design awards drawn from Chengxian Ju’s portfolio background.</p>
+          </div>
+          <ol class="recognition-list">
+            <li><span class="recognition-year">2024</span><span class="recognition-title">Second Prize — China–Italy Cultural Costume Exchange Competition</span><span class="recognition-type">Award</span></li>
+            <li><span class="recognition-year">2024</span><span class="recognition-title">Nominee Award — 9th Puyuan Cup Knitwear Fashion Design Competition</span><span class="recognition-type">Award</span></li>
+            <li><span class="recognition-year">2024</span><span class="recognition-title">Excellence Award — Genuine Leather MarkCup China International Leather &amp; Fur Fashion Design Competition</span><span class="recognition-type">Award</span></li>
+            <li><span class="recognition-year">2023</span><span class="recognition-title">Silver Prize — Oriental Cup Womenswear Design Competition</span><span class="recognition-type">Award</span></li>
+            <li><span class="recognition-year">2022</span><span class="recognition-title">Bronze Prize — China–UK Fashion Creativity Competition</span><span class="recognition-type">Award</span></li>
+          </ol>
+        </section>
+
+        <section class="connect-social" aria-labelledby="social-title">
+          <h2 id="social-title">Follow<br />the work.</h2>
+          <div class="connect-social-main">
+            <a class="social-link" href="https://www.instagram.com/jucessxi/" target="_blank" rel="noopener noreferrer" aria-label="Open CHENGXIAN's Instagram, @jucessxi, in a new tab">
+              <span class="social-label">Instagram</span>
+              <span class="social-handle">@jucessxi</span>
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a class="social-link" href="https://www.xiaohongshu.com/user/profile/61ec163e00000000100075e7" target="_blank" rel="noopener noreferrer" aria-label="Open CHENGXIAN's Xiaohongshu profile in a new tab">
+              <span class="social-label">小红书 / Xiaohongshu</span>
+              <span class="social-handle">Chengxian / profile</span>
+              <span class="social-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p class="micro-label">CHENGXIAN — Connect / Personal profile</p>
+        <p class="footer-meta">Hong Kong / 2026</p>
+      </footer>
+    </div>
+  </body>
+</html>
