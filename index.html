@@ -422,21 +422,13 @@
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero" aria-label="Runway films">
         <div class="hero__fallback" aria-hidden="true"></div>
         <video class="hero__media" id="hero-video" autoplay muted playsinline preload="metadata" poster="runway-cobalt.jpg" aria-hidden="true"></video>
         <div class="hero__wash" aria-hidden="true"></div>
         <div class="hero__frame" aria-hidden="true"></div>
         <button class="hero__side hero__side--prev" id="hero-prev" type="button" aria-label="Previous work">←</button>
-        <div class="hero__content">
-          <p class="hero__meta" id="hero-meta">01 / 02 — Runway Study</p>
-          <div class="hero__rule" aria-hidden="true"></div>
-          <h1 class="hero__title" id="hero-title">Cobalt / Runway</h1>
-          <p class="hero__sub" id="hero-sub">A saturated blue silhouette studies control, edge and projection in motion.</p>
-          <button class="hero__open" id="hero-open" type="button">Watch Film ↗</button>
-        </div>
         <button class="hero__side hero__side--next" id="hero-next" type="button" aria-label="Next work">→</button>
-        <div class="hero__foot"><span id="hero-format">Runway Study / 00:15</span><span>Scroll to selected work ↓</span></div>
       </section>
 
       <section id="work" aria-labelledby="work-title">
@@ -557,10 +549,6 @@
       const homeLoop = [4, 5];
       let currentSlide = homeLoop[0];
       const heroVideo = document.getElementById('hero-video');
-      const heroMeta = document.getElementById('hero-meta');
-      const heroTitle = document.getElementById('hero-title');
-      const heroSub = document.getElementById('hero-sub');
-      const heroFormat = document.getElementById('hero-format');
       const dialog = document.getElementById('video-dialog');
       const dialogVideo = document.getElementById('dialog-video');
       const videoUrls = new Map();
@@ -583,10 +571,6 @@
         const slide = slides[currentSlide];
         const requestedSlide = currentSlide;
         heroVideo.pause();
-        heroMeta.textContent = slide.homeMeta || slide.meta;
-        heroTitle.textContent = slide.title;
-        heroSub.textContent = slide.sub;
-        heroFormat.textContent = slide.format;
         heroVideo.poster = slide.poster || '';
         try {
           heroVideo.src = await videoSourceFor(slide);
@@ -615,20 +599,6 @@
       });
       document.querySelectorAll('[data-hero-slide]').forEach((card) => {
         card.addEventListener('click', (event) => { event.preventDefault(); setSlide(Number(card.dataset.heroSlide)); document.getElementById('top').scrollIntoView({ behavior: 'smooth' }); });
-      });
-      document.getElementById('hero-open').addEventListener('click', async () => {
-        const slide = slides[currentSlide];
-        dialogVideo.pause();
-        dialogVideo.poster = slide.poster || '';
-        dialog.showModal();
-        try {
-          dialogVideo.src = await videoSourceFor(slide, true);
-          if (!dialog.open) return;
-          dialogVideo.load();
-          dialogVideo.play().catch(() => {});
-        } catch (error) {
-          console.error('Unable to load selected film.', error);
-        }
       });
       document.getElementById('dialog-close').addEventListener('click', () => { dialogVideo.pause(); dialog.close(); });
       dialog.addEventListener('click', (event) => { if (event.target === dialog) { dialogVideo.pause(); dialog.close(); } });
