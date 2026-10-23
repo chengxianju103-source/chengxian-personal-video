@@ -424,21 +424,19 @@
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__fallback" aria-hidden="true"></div>
-        <video class="hero__media" id="hero-video" autoplay muted playsinline preload="metadata" aria-hidden="true">
-          <source src="constructed-self-loop.mp4" type="video/mp4" />
-        </video>
+        <video class="hero__media" id="hero-video" autoplay muted playsinline preload="metadata" poster="runway-cobalt.jpg" aria-hidden="true"></video>
         <div class="hero__wash" aria-hidden="true"></div>
         <div class="hero__frame" aria-hidden="true"></div>
         <button class="hero__side hero__side--prev" id="hero-prev" type="button" aria-label="Previous work">←</button>
         <div class="hero__content">
-          <p class="hero__meta" id="hero-meta">01 / 06 — Moving Image</p>
+          <p class="hero__meta" id="hero-meta">01 / 02 — Runway Study</p>
           <div class="hero__rule" aria-hidden="true"></div>
-          <h1 class="hero__title" id="hero-title">The Constructed Self</h1>
-          <p class="hero__sub" id="hero-sub">An ongoing fashion practice around the body, material and the ways identity is assembled, rehearsed and released.</p>
+          <h1 class="hero__title" id="hero-title">Cobalt / Runway</h1>
+          <p class="hero__sub" id="hero-sub">A saturated blue silhouette studies control, edge and projection in motion.</p>
           <button class="hero__open" id="hero-open" type="button">Watch Film ↗</button>
         </div>
         <button class="hero__side hero__side--next" id="hero-next" type="button" aria-label="Next work">→</button>
-        <div class="hero__foot"><span id="hero-format">Personal Film / 00:26</span><span>Scroll to selected work ↓</span></div>
+        <div class="hero__foot"><span id="hero-format">Runway Study / 00:15</span><span>Scroll to selected work ↓</span></div>
       </section>
 
       <section id="work" aria-labelledby="work-title">
@@ -553,10 +551,11 @@
         { source: 'texture-study.mp4', player: 'texture-study.mp4', meta: '02 / 06 — Material Study', title: 'Texture as Evidence', sub: 'Surface records pressure, friction, reflection and change. A texture becomes an active part of the body’s story.', format: 'Texture Study / 00:15' },
         { source: 'feel-study.mp4', player: 'feel-study.mp4', meta: '03 / 06 — Moving Image', title: 'Feel Before Form', sub: 'A moving study of the moment sensation reaches the surface—before it is named, controlled or made legible.', format: 'Feel Study / 00:36' },
         { source: 'feel-ii-study.mp4', player: 'feel-ii-study.mp4', meta: '04 / 06 — Moving Image', title: 'Feeling Takes Form', sub: 'A luminous body shifts between clarity and grain, holding an inner response against the image the world is ready to see.', format: 'Feel II / 00:36' },
-        { source: 'runway-cobalt', player: 'runway-cobalt', parts: ['media/runway-cobalt.00.bin', 'media/runway-cobalt.01.bin', 'media/runway-cobalt.02.bin', 'media/runway-cobalt.03.bin', 'media/runway-cobalt.04.bin'], poster: 'runway-cobalt.jpg', meta: '05 / 06 — Runway Study', title: 'Cobalt / Runway', sub: 'A saturated blue silhouette studies control, edge and projection in motion.', format: 'Runway Study / 00:15' },
-        { source: 'runway-silver', player: 'runway-silver', parts: ['media/runway-silver.00.bin', 'media/runway-silver.01.bin', 'media/runway-silver.02.bin', 'media/runway-silver.03.bin', 'media/runway-silver.04.bin', 'media/runway-silver.05.bin', 'media/runway-silver.06.bin', 'media/runway-silver.07.bin', 'media/runway-silver.08.bin', 'media/runway-silver.09.bin'], poster: 'runway-silver.jpg', meta: '06 / 06 — Runway Study', title: 'Silver / Runway', sub: 'A pale layered look moves through an aquatic-blue field, tracing softness against a sharp technical frame.', format: 'Runway Study / 00:47' }
+        { source: 'runway-cobalt', player: 'runway-cobalt', parts: ['media/runway-cobalt.00.bin', 'media/runway-cobalt.01.bin', 'media/runway-cobalt.02.bin', 'media/runway-cobalt.03.bin', 'media/runway-cobalt.04.bin'], poster: 'runway-cobalt.jpg', meta: '05 / 06 — Runway Study', homeMeta: '01 / 02 — Runway Study', title: 'Cobalt / Runway', sub: 'A saturated blue silhouette studies control, edge and projection in motion.', format: 'Runway Study / 00:15' },
+        { source: 'runway-silver', player: 'runway-silver', parts: ['media/runway-silver.00.bin', 'media/runway-silver.01.bin', 'media/runway-silver.02.bin', 'media/runway-silver.03.bin', 'media/runway-silver.04.bin', 'media/runway-silver.05.bin', 'media/runway-silver.06.bin', 'media/runway-silver.07.bin', 'media/runway-silver.08.bin', 'media/runway-silver.09.bin'], poster: 'runway-silver.jpg', meta: '06 / 06 — Runway Study', homeMeta: '02 / 02 — Runway Study', title: 'Silver / Runway', sub: 'A pale layered look moves through an aquatic-blue field, tracing softness against a sharp technical frame.', format: 'Runway Study / 00:47' }
       ];
-      let currentSlide = 0;
+      const homeLoop = [4, 5];
+      let currentSlide = homeLoop[0];
       const heroVideo = document.getElementById('hero-video');
       const heroMeta = document.getElementById('hero-meta');
       const heroTitle = document.getElementById('hero-title');
@@ -584,7 +583,7 @@
         const slide = slides[currentSlide];
         const requestedSlide = currentSlide;
         heroVideo.pause();
-        heroMeta.textContent = slide.meta;
+        heroMeta.textContent = slide.homeMeta || slide.meta;
         heroTitle.textContent = slide.title;
         heroSub.textContent = slide.sub;
         heroFormat.textContent = slide.format;
@@ -599,9 +598,21 @@
         }
       }
 
-      document.getElementById('hero-prev').addEventListener('click', () => setSlide(currentSlide - 1));
-      document.getElementById('hero-next').addEventListener('click', () => setSlide(currentSlide + 1));
-      heroVideo.addEventListener('ended', () => setSlide(currentSlide + 1));
+      function currentHomeLoopIndex() {
+        const index = homeLoop.indexOf(currentSlide);
+        return index === -1 ? 0 : index;
+      }
+
+      function setHomeSlide(index) {
+        return setSlide(homeLoop[(index + homeLoop.length) % homeLoop.length]);
+      }
+
+      document.getElementById('hero-prev').addEventListener('click', () => setHomeSlide(currentHomeLoopIndex() - 1));
+      document.getElementById('hero-next').addEventListener('click', () => setHomeSlide(currentHomeLoopIndex() + 1));
+      heroVideo.addEventListener('ended', () => {
+        const index = homeLoop.indexOf(currentSlide);
+        setHomeSlide(index === -1 ? 0 : index + 1);
+      });
       document.querySelectorAll('[data-hero-slide]').forEach((card) => {
         card.addEventListener('click', (event) => { event.preventDefault(); setSlide(Number(card.dataset.heroSlide)); document.getElementById('top').scrollIntoView({ behavior: 'smooth' }); });
       });
@@ -622,6 +633,7 @@
       document.getElementById('dialog-close').addEventListener('click', () => { dialogVideo.pause(); dialog.close(); });
       dialog.addEventListener('click', (event) => { if (event.target === dialog) { dialogVideo.pause(); dialog.close(); } });
       dialog.addEventListener('cancel', () => dialogVideo.pause());
+      setHomeSlide(0);
     </script>
   </body>
 </html>
