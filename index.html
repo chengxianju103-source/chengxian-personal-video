@@ -424,14 +424,14 @@
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__fallback" aria-hidden="true"></div>
-        <video class="hero__media" id="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+        <video class="hero__media" id="hero-video" autoplay muted playsinline preload="metadata" aria-hidden="true">
           <source src="constructed-self-loop.mp4" type="video/mp4" />
         </video>
         <div class="hero__wash" aria-hidden="true"></div>
         <div class="hero__frame" aria-hidden="true"></div>
         <button class="hero__side hero__side--prev" id="hero-prev" type="button" aria-label="Previous work">←</button>
         <div class="hero__content">
-          <p class="hero__meta" id="hero-meta">01 / 04 — Moving Image</p>
+          <p class="hero__meta" id="hero-meta">01 / 06 — Moving Image</p>
           <div class="hero__rule" aria-hidden="true"></div>
           <h1 class="hero__title" id="hero-title">The Constructed Self</h1>
           <p class="hero__sub" id="hero-sub">An ongoing fashion practice around the body, material and the ways identity is assembled, rehearsed and released.</p>
@@ -445,14 +445,14 @@
         <div class="section-title">
           <span class="section-title__eyebrow">Selected work / moving-image archive</span>
           <h2 id="work-title">Current<br />Practice.</h2>
-          <span class="section-title__index">01—04</span>
+          <span class="section-title__index">01—06</span>
         </div>
         <div class="work-grid">
           <a class="work-card" href="#top" data-hero-slide="0" aria-label="Open The Constructed Self film">
             <video class="work-card__media" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="constructed-self-loop.mp4" type="video/mp4" /></video>
             <div class="work-card__shade" aria-hidden="true"></div>
             <div class="work-card__content">
-              <div class="work-card__top card__meta"><span>01 / 04</span><span>Film / 00:26</span></div>
+              <div class="work-card__top card__meta"><span>01 / 06</span><span>Film / 00:26</span></div>
               <div class="work-card__bottom"><h3>The<br />Constructed Self</h3><span class="work-card__arrow" aria-hidden="true">↗</span></div>
             </div>
           </a>
@@ -460,7 +460,7 @@
             <video class="work-card__media" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="texture-study.mp4" type="video/mp4" /></video>
             <div class="work-card__shade" aria-hidden="true"></div>
             <div class="work-card__content">
-              <div class="work-card__top card__meta"><span>02 / 04</span><span>Texture / 00:15</span></div>
+              <div class="work-card__top card__meta"><span>02 / 06</span><span>Texture / 00:15</span></div>
               <div class="work-card__bottom"><h3>Texture<br />Study</h3><span class="work-card__arrow" aria-hidden="true">↗</span></div>
             </div>
           </a>
@@ -468,7 +468,7 @@
             <video class="work-card__media" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="feel-study.mp4" type="video/mp4" /></video>
             <div class="work-card__shade" aria-hidden="true"></div>
             <div class="work-card__content">
-              <div class="work-card__top card__meta"><span>03 / 04</span><span>Film / 00:36</span></div>
+              <div class="work-card__top card__meta"><span>03 / 06</span><span>Film / 00:36</span></div>
               <div class="work-card__bottom"><h3>Feel<br />Study</h3><span class="work-card__arrow" aria-hidden="true">↗</span></div>
             </div>
           </a>
@@ -476,8 +476,24 @@
             <video class="work-card__media" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="feel-ii-study.mp4" type="video/mp4" /></video>
             <div class="work-card__shade" aria-hidden="true"></div>
             <div class="work-card__content">
-              <div class="work-card__top card__meta"><span>04 / 04</span><span>Film / 00:36</span></div>
+              <div class="work-card__top card__meta"><span>04 / 06</span><span>Film / 00:36</span></div>
               <div class="work-card__bottom"><h3>Feel<br />II</h3><span class="work-card__arrow" aria-hidden="true">↗</span></div>
+            </div>
+          </a>
+          <a class="work-card" href="#top" data-hero-slide="4" aria-label="Open Cobalt Runway film">
+            <img class="work-card__media" src="runway-cobalt.jpg" alt="" loading="lazy" />
+            <div class="work-card__shade" aria-hidden="true"></div>
+            <div class="work-card__content">
+              <div class="work-card__top card__meta"><span>05 / 06</span><span>Runway / 00:15</span></div>
+              <div class="work-card__bottom"><h3>Cobalt<br />Runway</h3><span class="work-card__arrow" aria-hidden="true">↗</span></div>
+            </div>
+          </a>
+          <a class="work-card" href="#top" data-hero-slide="5" aria-label="Open Silver Runway film">
+            <img class="work-card__media" src="runway-silver.jpg" alt="" loading="lazy" />
+            <div class="work-card__shade" aria-hidden="true"></div>
+            <div class="work-card__content">
+              <div class="work-card__top card__meta"><span>06 / 06</span><span>Runway / 00:47</span></div>
+              <div class="work-card__bottom"><h3>Silver<br />Runway</h3><span class="work-card__arrow" aria-hidden="true">↗</span></div>
             </div>
           </a>
         </div>
@@ -533,10 +549,12 @@
 
     <script>
       const slides = [
-        { source: 'constructed-self-loop.mp4', player: 'personal-video.mp4', meta: '01 / 04 — Moving Image', title: 'The Constructed Self', sub: 'An ongoing fashion practice around the body, material and the ways identity is assembled, rehearsed and released.', format: 'Personal Film / 00:26' },
-        { source: 'texture-study.mp4', player: 'texture-study.mp4', meta: '02 / 04 — Material Study', title: 'Texture as Evidence', sub: 'Surface records pressure, friction, reflection and change. A texture becomes an active part of the body’s story.', format: 'Texture Study / 00:15' },
-        { source: 'feel-study.mp4', player: 'feel-study.mp4', meta: '03 / 04 — Moving Image', title: 'Feel Before Form', sub: 'A moving study of the moment sensation reaches the surface—before it is named, controlled or made legible.', format: 'Feel Study / 00:36' },
-        { source: 'feel-ii-study.mp4', player: 'feel-ii-study.mp4', meta: '04 / 04 — Moving Image', title: 'Feeling Takes Form', sub: 'A luminous body shifts between clarity and grain, holding an inner response against the image the world is ready to see.', format: 'Feel II / 00:36' }
+        { source: 'constructed-self-loop.mp4', player: 'personal-video.mp4', meta: '01 / 06 — Moving Image', title: 'The Constructed Self', sub: 'An ongoing fashion practice around the body, material and the ways identity is assembled, rehearsed and released.', format: 'Personal Film / 00:26' },
+        { source: 'texture-study.mp4', player: 'texture-study.mp4', meta: '02 / 06 — Material Study', title: 'Texture as Evidence', sub: 'Surface records pressure, friction, reflection and change. A texture becomes an active part of the body’s story.', format: 'Texture Study / 00:15' },
+        { source: 'feel-study.mp4', player: 'feel-study.mp4', meta: '03 / 06 — Moving Image', title: 'Feel Before Form', sub: 'A moving study of the moment sensation reaches the surface—before it is named, controlled or made legible.', format: 'Feel Study / 00:36' },
+        { source: 'feel-ii-study.mp4', player: 'feel-ii-study.mp4', meta: '04 / 06 — Moving Image', title: 'Feeling Takes Form', sub: 'A luminous body shifts between clarity and grain, holding an inner response against the image the world is ready to see.', format: 'Feel II / 00:36' },
+        { source: 'runway-cobalt', player: 'runway-cobalt', parts: ['media/runway-cobalt.00.bin', 'media/runway-cobalt.01.bin', 'media/runway-cobalt.02.bin', 'media/runway-cobalt.03.bin', 'media/runway-cobalt.04.bin'], poster: 'runway-cobalt.jpg', meta: '05 / 06 — Runway Study', title: 'Cobalt / Runway', sub: 'A saturated blue silhouette studies control, edge and projection in motion.', format: 'Runway Study / 00:15' },
+        { source: 'runway-silver', player: 'runway-silver', parts: ['media/runway-silver.00.bin', 'media/runway-silver.01.bin', 'media/runway-silver.02.bin', 'media/runway-silver.03.bin', 'media/runway-silver.04.bin', 'media/runway-silver.05.bin', 'media/runway-silver.06.bin', 'media/runway-silver.07.bin', 'media/runway-silver.08.bin', 'media/runway-silver.09.bin'], poster: 'runway-silver.jpg', meta: '06 / 06 — Runway Study', title: 'Silver / Runway', sub: 'A pale layered look moves through an aquatic-blue field, tracing softness against a sharp technical frame.', format: 'Runway Study / 00:47' }
       ];
       let currentSlide = 0;
       const heroVideo = document.getElementById('hero-video');
@@ -546,32 +564,60 @@
       const heroFormat = document.getElementById('hero-format');
       const dialog = document.getElementById('video-dialog');
       const dialogVideo = document.getElementById('dialog-video');
+      const videoUrls = new Map();
 
-      function setSlide(index) {
+      async function videoSourceFor(slide, usePlayer = false) {
+        if (!slide.parts) return usePlayer ? slide.player : slide.source;
+        if (!videoUrls.has(slide.source)) {
+          const buffers = await Promise.all(slide.parts.map(async (part) => {
+            const response = await fetch(part);
+            if (!response.ok) throw new Error(`Unable to load ${part}`);
+            return response.arrayBuffer();
+          }));
+          videoUrls.set(slide.source, URL.createObjectURL(new Blob(buffers, { type: 'video/mp4' })));
+        }
+        return videoUrls.get(slide.source);
+      }
+
+      async function setSlide(index) {
         currentSlide = (index + slides.length) % slides.length;
         const slide = slides[currentSlide];
+        const requestedSlide = currentSlide;
         heroVideo.pause();
-        heroVideo.querySelector('source').src = slide.source;
-        heroVideo.load();
-        heroVideo.play().catch(() => {});
         heroMeta.textContent = slide.meta;
         heroTitle.textContent = slide.title;
         heroSub.textContent = slide.sub;
         heroFormat.textContent = slide.format;
+        heroVideo.poster = slide.poster || '';
+        try {
+          heroVideo.src = await videoSourceFor(slide);
+          if (requestedSlide !== currentSlide) return;
+          heroVideo.load();
+          heroVideo.play().catch(() => {});
+        } catch (error) {
+          console.error('Unable to load selected film.', error);
+        }
       }
 
       document.getElementById('hero-prev').addEventListener('click', () => setSlide(currentSlide - 1));
       document.getElementById('hero-next').addEventListener('click', () => setSlide(currentSlide + 1));
+      heroVideo.addEventListener('ended', () => setSlide(currentSlide + 1));
       document.querySelectorAll('[data-hero-slide]').forEach((card) => {
         card.addEventListener('click', (event) => { event.preventDefault(); setSlide(Number(card.dataset.heroSlide)); document.getElementById('top').scrollIntoView({ behavior: 'smooth' }); });
       });
-      document.getElementById('hero-open').addEventListener('click', () => {
+      document.getElementById('hero-open').addEventListener('click', async () => {
         const slide = slides[currentSlide];
         dialogVideo.pause();
-        dialogVideo.querySelector('source').src = slide.player;
-        dialogVideo.load();
+        dialogVideo.poster = slide.poster || '';
         dialog.showModal();
-        dialogVideo.play().catch(() => {});
+        try {
+          dialogVideo.src = await videoSourceFor(slide, true);
+          if (!dialog.open) return;
+          dialogVideo.load();
+          dialogVideo.play().catch(() => {});
+        } catch (error) {
+          console.error('Unable to load selected film.', error);
+        }
       });
       document.getElementById('dialog-close').addEventListener('click', () => { dialogVideo.pause(); dialog.close(); });
       dialog.addEventListener('click', (event) => { if (event.target === dialog) { dialogVideo.pause(); dialog.close(); } });
