@@ -77,9 +77,9 @@
         background: rgba(255, 255, 255, .98);
         border-bottom: 1px solid var(--line);
       }
-      .header-group { display: flex; }
+      .header-group { display: flex; justify-content: stretch; }
       .header-group--left { border-right: 1px solid var(--line); }
-      .header-group--right { border-left: 1px solid var(--line); justify-content: flex-end; }
+      .header-group--right { border-left: 1px solid var(--line); }
       .header-link, .brand {
         display: inline-flex;
         align-items: center;
@@ -96,6 +96,7 @@
         text-transform: uppercase;
         transition: background .2s ease, color .2s ease;
       }
+      .header-link { flex: 1 1 0; }
       .header-group--right .header-link { border-right: 0; border-left: 1px solid var(--line); }
       .header-group--right .header-link:first-child { border-left: 0; }
       .header-link:hover, .header-link:focus-visible {
