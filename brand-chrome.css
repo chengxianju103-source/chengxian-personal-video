@@ -1,0 +1,19 @@
+/* Shared navigation chrome for CHENGXIAN's archive pages. */
+:root { --brand-ink:#111111; --brand-paper:#f4f3ef; --brand-white:#ffffff; --brand-line:rgba(17,17,17,.84); --brand-signal:#e55b4e; }
+.announcement {
+  display:flex; align-items:center; min-height:2rem; overflow:hidden; background:var(--brand-signal); color:var(--brand-white); border-bottom:1px solid var(--brand-line); white-space:nowrap;
+}
+.announcement__track { display:flex; width:max-content; min-width:100%; animation:brand-ticker 30s linear infinite; font:700 .66rem/1 Arial,Helvetica,sans-serif; letter-spacing:.055em; text-transform:uppercase; }
+.announcement__track span { padding:0 2.45rem; }.announcement__track span::after { content:"✦"; margin-left:2.45rem; }
+@keyframes brand-ticker { from { transform:translateX(0); } to { transform:translateX(-30%); } }
+.brand-header {
+  position:relative; z-index:40; display:grid; grid-template-columns:minmax(0,1fr) minmax(16rem,1.2fr) minmax(0,1fr); min-height:3.8rem; background:rgba(255,255,255,.98); color:var(--brand-ink); border-bottom:1px solid var(--brand-line); font-family:Arial,Helvetica,sans-serif; text-transform:uppercase;
+}
+.brand-header__group { display:flex; justify-content:stretch; }.brand-header__group--left { border-right:1px solid var(--brand-line); }.brand-header__group--right { border-left:1px solid var(--brand-line); }
+.brand-header__link,.brand-header__mark { display:inline-flex; flex:1 1 0; align-items:center; justify-content:center; min-height:3.8rem; padding:.82rem 1rem; border-right:1px solid var(--brand-line); font-size:.73rem; font-weight:500; letter-spacing:-.025em; text-align:center; transition:background .2s ease,color .2s ease; }
+.brand-header__group--right .brand-header__link { border-right:0; border-left:1px solid var(--brand-line); }.brand-header__group--right .brand-header__link:first-child { border-left:0; }
+.brand-header__link:hover,.brand-header__link:focus-visible { outline:0; background:var(--brand-ink); color:var(--brand-white); }
+.brand-header__mark { width:100%; border:0; font-size:clamp(1.06rem,1.8vw,1.53rem); font-weight:700; letter-spacing:-.075em; }.brand-header__mark span { transform:scaleX(1.06); }
+@media (max-width:790px) {
+  .announcement__track { font-size:.58rem; }.brand-header { grid-template-columns:1fr; }.brand-header__group { overflow-x:auto; border-bottom:1px solid var(--brand-line); }.brand-header__group--left,.brand-header__group--right { border-right:0; border-left:0; justify-content:stretch; }.brand-header__group--right { border-bottom:0; }.brand-header__group--left .brand-header__link:last-child { border-right:0; }.brand-header__group--right .brand-header__link:first-child { border-left:0; }.brand-header__link { flex:1 0 auto; min-width:6.2rem; min-height:3.3rem; padding:.65rem .75rem; font-size:.62rem; }.brand-header__mark { min-height:3.55rem; order:-1; }
+}
